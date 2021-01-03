@@ -16,7 +16,6 @@
 *.db
 *.suo
 *.ipch
-*.class
 /.idea/
 /Debug/
 /.vs/
