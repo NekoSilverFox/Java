@@ -26,7 +26,7 @@ public class DamoConst {
 		System.out.println(0.52486);
 
 		// 字符常量（只能有单个字符）
-		System.out.println('A');
+		System.out.println('A');		// 注意，有且仅有一个字符。 ('') <-- 是错误的
 		System.out.println('&');
 
 		// 布尔常量
