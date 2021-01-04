@@ -1,5 +1,6 @@
 *.xml
 *.class
+*.iml
 *.sln
 *.tlog
 *.vcxproj
