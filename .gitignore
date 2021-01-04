@@ -18,6 +18,7 @@
 *.suo
 *.ipch
 /.idea/
+/out/
 /Debug/
 /.vs/
 /v16/
