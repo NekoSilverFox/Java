@@ -12,9 +12,9 @@ public class Demo101PhoneOne {
 
         System.out.println("=================");
 
-        System.out.println(p1.brand); //null
-        System.out.println(p1.color); // null
-        System.out.println(p1.price); // 0.0
+        System.out.println(p1.brand);
+        System.out.println(p1.color);
+        System.out.println(p1.price);
 
         System.out.println("=================");
 
