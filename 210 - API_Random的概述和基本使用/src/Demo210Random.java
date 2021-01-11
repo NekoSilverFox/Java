@@ -22,5 +22,12 @@ public class Demo210Random {
 
         int num = r.nextInt();
         System.out.println("Random：" + num);
+
+        System.out.println("======================");
+
+        for (int i = 0; i < 100; i++) {
+            System.out.println(r.nextInt(10));
+        }
+
     }
 }
