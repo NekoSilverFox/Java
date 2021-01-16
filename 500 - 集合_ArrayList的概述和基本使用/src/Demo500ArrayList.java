@@ -13,6 +13,20 @@
     如果内容是空，得到的是空的中括号：[]
  */
 
+    /*
+    ArrayList当中的常用方法有：
+
+        public boolean add(E e)：向集合当中添加元素，参数的类型和泛型一致。返回值代表添加是否成功。
+        备注：对于ArrayList集合来说，add添加动作一定是成功的，所以返回值可用可不用。
+        但是对于其他集合（今后学习）来说，add添加动作不一定成功。
+
+        public E get(int index)：从集合当中获取元素，参数是索引编号，返回值就是对应位置的元素。
+
+        public E remove(int index)：从集合当中删除元素，参数是索引编号，返回值就是被删除掉的元素。
+
+        public int size()：获取集合的尺寸长度，返回值是集合中包含的元素个数。
+ */
+
 import java.util.ArrayList;
 
 public class Demo500ArrayList {
@@ -29,5 +43,21 @@ public class Demo500ArrayList {
         array_list.add("Nick");
         array_list.add("Jud");
         System.out.println(array_list); // [Fox, Nick, Jud]
+
+        boolean isSuccess = array_list.add("Yiff");
+        System.out.println(isSuccess);
+
+        // 从集合中获取元素：get。索引值从0开始
+        String name = array_list.get(2);
+        System.out.println("第2号索引位置：" + name); // Juy
+
+        // 从集合中删除元素：remove。索引值从0开始。
+        String whoRemoved = array_list.remove(3);
+        System.out.println("被删除的人是：" + whoRemoved); // Yiff
+        System.out.println(array_list); // [Fox, Nick, Jud]
+
+        // 获取集合的长度尺寸，也就是其中元素的个数
+        int size = array_list.size();
+        System.out.println("集合的长度是：" + size);
     }
 }
