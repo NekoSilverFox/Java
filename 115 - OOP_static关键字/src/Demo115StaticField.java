@@ -1,5 +1,5 @@
 // 115 - OOP_static关键字
-public class Demo115Static {
+public class Demo115StaticField {
     public static void main(String[] args) {
         Student two = new Student("黄蓉", 16);
         two.room = "101教室";
