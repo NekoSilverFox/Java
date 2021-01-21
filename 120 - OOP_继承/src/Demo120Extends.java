@@ -22,5 +22,7 @@ public class Demo120Extends {
         Teacher teacher = new Teacher();
         // Teacher类当中虽然什么都没写，但是会继承来自父类的method方法。
         teacher.method();
+
+        System.out.println(teacher.num); // 当有重名时，打印子类的（就近算则）
     }
 }

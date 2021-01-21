@@ -1,4 +1,6 @@
 public class Employee {
+    int num = 1;
+
     public Employee() {
         System.out.println("Employee 的构造函数执行了");
     }
