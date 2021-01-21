@@ -14,6 +14,10 @@
 
 public abstract class Animal {
 
+    public Animal() {
+        System.out.println("Animal 的构造函数执行了");
+    }
+
     // 这是一个抽象方法，代表吃东西，但是具体吃什么（大括号的内容）不确定。
     public abstract void eat();
 
