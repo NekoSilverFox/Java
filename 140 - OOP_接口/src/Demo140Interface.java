@@ -36,6 +36,11 @@ public interface 接口名称 {
 如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类。
  */
 
+/*
+1. 接口的默认方法，可以通过接口实现类对象，直接调用。
+2. 接口的默认方法，也可以被接口实现类进行覆盖重写。
+ */
+
 public interface Demo140Interface {
     public static void main(String[] args) {
         // 错误写法！不能直接new接口对象使用。
@@ -45,5 +50,16 @@ public interface Demo140Interface {
         MyInterfaceAbstractImpl impl = new MyInterfaceAbstractImpl();
         impl.methodAbs();
         impl.methodAbs2();
+
+        System.out.println("===========");
+        MyInterfaceDefaultA a = new MyInterfaceDefaultA();
+        a.methodAbs();
+        // 调用默认方法，如果实现类当中没有，会向上找接口
+        a.methodDefault();// 这是新添加的默认方法
+
+        System.out.println("===========");
+        MyInterfaceDefaultB b = new MyInterfaceDefaultB();
+        b.methodAbs();
+        b.methodDefault();
     }
 }
