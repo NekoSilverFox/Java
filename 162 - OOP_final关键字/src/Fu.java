@@ -9,7 +9,7 @@
     对于类、方法来说，abstract关键字和final关键字不能同时使用，因为矛盾。【重点】
  */
 
-public class Fu {
+public abstract class Fu {
     public void method() {
         System.out.println("父类方法执行");
     }
@@ -19,6 +19,6 @@ public class Fu {
     }
 
     // abstract 必须覆盖重写，final不能被重写【重点】
-//    public abstract /*final*/ void methodAbs();
+    public abstract /*final*/ void methodAbs();
 
 }
