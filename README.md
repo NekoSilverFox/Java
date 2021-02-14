@@ -104,9 +104,11 @@
   }
   ```
 
-### interface
+### interface & implements
 
-- 译为：接口，交互界面
+- `interface` 译为：接口，交互界面
+
+- `implements` 译为：执行履行，在对接口进行实现时使用
 
 - 接口就是多个类的公共规范。
   接口是一种引用数据类型，最重要的内容就是其中的：抽象方法。
@@ -234,7 +236,92 @@
 
 ---
 
-【接口中包含默认方法】代码示例：
+【接口中包含**默认**方法】代码示例：
+
+```java
+》》》》》 接口定义：
+/*
+从Java 8开始，接口里允许定义默认方法。
+格式：
+public default 返回值类型 方法名称(参数列表) {
+    方法体
+}
+
+备注：接口当中的默认方法，可以解决接口升级的问题。
+ */
+public interface MyInterfaceDefault {
+
+    // 抽象方法
+    public abstract void methodAbs();
+
+    // 新添加的方法，改成默认方法
+    public default void methodDefault() {
+        System.out.println("这是新添加的默认方法");
+    }
+
+}
+
+
+》》》》》 接口实现：
+public class MyInterfaceDefaultB implements MyInterfaceDefault{
+    @Override
+    public void methodAbs() {
+        System.out.println("实现了抽象方法BBB");
+    }
+
+    // 注意：这里可以重写接口中的默认方法，也可以不重写
+    // 如果没有重写，在调用时就会向上（接口默认）寻找
+    @Override
+    public void methodDefault() {
+        System.out.println("在B中重写了 methodDefault");
+    }
+}
+
+```
+
+---
+
+---
+
+【接口中包含**静态**方法】代码示例：
+
+```java
+》》》》》 接口定义：
+/*
+从Java 8开始，接口当中允许定义静态方法。
+格式：
+public static 返回值类型 方法名称(参数列表) {
+    方法体
+}
+提示：就是将abstract或者default换成static即可，带上方法体。
+ */
+
+public interface MyInterfaceStatic {
+    public static void help() {
+        System.out.println("这是一条帮助信息");
+    }
+}
+
+》》》》》 接口实现：
+public class MyInterfaceStaticImpl implements MyInterfaceStatic {
+	
+}
+
+》》》》》 使用：
+        /*
+        注意事项：不能通过接口实现类的对象来调用接口当中的静态方法。
+        正确用法：通过接口名称，直接调用其中的静态方法。
+        格式：
+        接口名称.静态方法名(参数);
+         */
+        System.out.println("===========");
+        // 错误写法！
+//        MyInterfaceStaticImpl s = new MyInterfaceStaticImpl();
+//        s.help();
+
+        // 直接通过接口名称调用静态方法
+        MyInterfaceStatic.help();
+```
 
 
 
