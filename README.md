@@ -129,7 +129,7 @@
 
   如果是Java 8，还可以额外包含有：
       3. 默认方法
-      4. 静态方法
+          4. 静态方法
 
   如果是Java 9，还可以额外包含有：
   
@@ -323,7 +323,141 @@ public class MyInterfaceStaticImpl implements MyInterfaceStatic {
         MyInterfaceStatic.help();
 ```
 
+### private
 
+- 译为：私有的
+
+- **实例：接口中的私有方法定义：**
+
+  ```java
+  /*
+  问题描述：
+  我们需要抽取一个共有方法，用来解决两个默认方法之间重复代码的问题。
+  但是这个共有方法不应该让实现类使用，应该是私有化的。
+  
+  解决方案：
+  从Java 9开始，接口当中允许定义私有方法。
+      1. 普通私有方法，解决多个默认方法之间重复代码问题
+          格式：
+          private 返回值类型 方法名称(参数列表) {
+              方法体
+          }
+  
+      2. 静态私有方法，解决多个静态方法之间重复代码问题
+          格式：
+          private static 返回值类型 方法名称(参数列表) {
+              方法体
+  }
+   */
+  public interface MyInterfacePrivate {
+      public default void methodDefaultA() {
+          System.out.println("默认方法A");
+          methodDefaultCommand();
+      }
+  
+      public default void methodDefaultB() {
+          System.out.println("默认方法B");
+          methodDefaultCommand();
+      }
+  
+      private void methodDefaultCommand() {
+          System.out.println("AAA");
+          System.out.println("BBB");
+          System.out.println("CCC");
+      }
+  }
+  ```
+
+### final
+
+- final关键字代表最终、不可改变的。
+
+  常见四种用法：
+         1. 可以用来修饰一个类
+         2. 可以用来修饰一个方法
+         3. 还可以用来修饰一个局部变量
+         4. 还可以用来修饰一个成员变量
+
+- 【重点】
+  对于基本类型来说，不可变说的是变量当中的数据不可改变
+  对于引用类型来说，不可变说的是变量当中的地址值不可改变
+
+- 使用：用于**描述常量**
+
+- 格式：**`public static final 数据类型 常量名称 = 数值;`**
+
+- 使用示例：
+
+  ```java
+  // 143 - OOP_接口中的常量
+  
+  /*
+  接口当中也可以定义“成员变量”，但是必须使用public static final三个关键字进行修饰。
+  从效果上看，这其实就是接口的【常量】。
+  
+  格式：
+      public static final 数据类型 常量名称 = 数据值;
+  备注：
+      一旦使用final关键字进行修饰，说明不可改变。
+  
+  注意事项：
+      1. 接口当中的常量，可以省略public static final，注意：不写也照样是这样。
+      2. 接口当中的常量，必须进行赋值；不能不赋值。
+      3. 接口中常量的名称，使用完全大写的字母，用下划线进行分隔。（推荐命名规则）
+      4. 使用的时候直接通过接口名称点出来
+   */
+  
+  public interface Demo143InterfaceConst {
+      // 这其实就是一个常量，一旦赋值，不可以修改
+      public static final int NUM_OF_INTERFACE = 10;
+  }
+  ```
+
+### instanceof
+
+- 译为：运算符
+
+- 使用：判断一个变量的类型
+
+- ```java
+  // 160 - OOP_多态_使用instanceof进行类型判断
+  
+  /*
+  如何才能知道一个父类引用的对象，本来是什么子类？
+  格式：
+  对象 instanceof 类名称
+  这将会得到一个boolean值结果，也就是判断前面的对象能不能当做后面类型的实例。
+   */
+  public class Demo160Instanceof {
+      public static void main(String[] args) {
+          Animal animal = new Dog();
+          animal.eat(); // eat fish
+  
+          // 如果希望掉用子类特有方法，需要向下转型
+          // 判断一下父类引用animal本来是不是Dog
+          if (animal instanceof Dog) {
+              Dog dog = (Dog)animal;
+              dog.method();
+          } else if (animal instanceof Cat) {
+              Cat cat = (Cat)animal;
+              cat.method();
+          }
+  
+          giveMePet(new Dog());
+  
+      }
+  
+      public static void giveMePet(Animal animal) {
+          if (animal instanceof Dog) {
+              Dog dog = (Dog)animal;
+              dog.method();
+          } else if (animal instanceof Cat) {
+              Cat cat = (Cat)animal;
+              cat.method();
+          }
+      }
+  }
+  ```
 
 # 变量
 
@@ -425,9 +559,110 @@ public class MyInterfaceStaticImpl implements MyInterfaceStatic {
 注意：应该通过接口名称进行调用，不能通过实现类对象调用接口静态方法
 
 5. 从Java 9开始，接口里允许定义私有方法，格式：
-普通私有方法：private 返回值类型 方法名称(参数列表) { 方法体 }
-静态私有方法：private static 返回值类型 方法名称(参数列表) { 方法体 }
-注意：private的方法只有接口自己才能调用，不能被实现类或别人使用。
+  普通私有方法：private 返回值类型 方法名称(参数列表) { 方法体 }
+  静态私有方法：private static 返回值类型 方法名称(参数列表) { 方法体 }
+  注意：private的方法只有接口自己才能调用，不能被实现类或别人使用。
+
+6. **接口中不能有静态代码块！**
+
+  ```java
+      // 接口中不能有静态代码块！
+  //    static {
+  //
+  //    }
+  ```
+
+7. **接口中不能有构造方法！**
+
+   ```java
+       // 接口中不能有构造方法、
+   //    public MyInterface() {
+   //
+   //    }
+   ```
+
+8. 其他：
+
+   ```java
+   使用接口的时候，需要注意：
+   
+       1. 接口是没有静态代码块或者构造方法的。
+       2. 一个类的直接父类是唯一的，但是一个类可以同时实现多个接口。
+       格式：
+           public class MyInterfaceImpl implements MyInterfaceA, MyInterfaceB {
+               // 覆盖重写所有抽象方法
+           }
+       3. 如果实现类所实现的多个接口当中，存在重复的抽象方法，那么只需要覆盖重写一次即可。
+       4. 如果实现类没有覆盖重写所有接口当中的所有抽象方法，那么实现类就必须是一个抽象类。
+       5. 如果实现类锁实现的多个接口当中，存在重复的默认方法，那么实现类一定要对冲突的默认方法进行覆盖重写。
+       6. 一个类如果直接父类当中的方法，和接口当中的默认方法产生了冲突，优先用父类当中的方法。
+       	public class Zi extends Fu implements MyInterfaceC{
+   		} // 145 - OOP_接口中的注意事项
+   ```
+
+9. **可以通过一个类对多个接口进行实现：**
+
+   ```java
+   public class MyInterfaceImpl /*extends Object*/ implements MyInterfaceA, MyInterfaceB{
+       @Override
+       public void method() {
+           System.out.println("覆盖重写了AB接口都有的抽象方法");
+       }
+   
+       @Override
+       public void methodA() {
+           System.out.println("Rewrite A");
+       }
+   
+       @Override
+       public void methodB() {
+           System.out.println("Rewrite A");
+       }
+   
+       @Override
+       public void methodSameDefaultAB() {
+           System.out.println("对AB相同的默认方法进行了重写");
+       }
+   }
+   ```
+
+## 接口当中的多继承
+
+```java
+public interface MyInterface extends MyInterfaceA, MyInterfaceB {
+    public abstract void method();
+
+    // 多个父接口当中的默认方法如果重复，那么子接口必须进行默认方法的覆盖重写，【而且带着default关键字】。
+    @Override
+    public default void methodDefault() {
+
+    }
+}
+```
+
+# 多态
+
+代码当中体现多态性，其实就是一句话：**父类引用指向子类对象**
+
+格式：
+	**父类名称 对象名 = new 子类名称();**
+或者：
+	**接口名称 对象名 = new 实现类名称();**
+
+在多态的代码当中，成员【方法】的访问规则是：
+    看new的是谁，就优先用谁，没有则向上找。
+口诀：编译看左边，运行看右边。
+
+访问成员变量的两种方式：
+成员变量不能覆盖重写【重点】
+1. 直接通过对象名称访问成员变量：看等号左边是谁，优先用谁，没有则向上找。
+2. 间接通过成员方法访问成员变量：看该方法属于谁，优先用谁，没有则向上找。
+
+对比一下：【重点】
+**成员变量：编译看左边，运行还看左边。**
+**成员方法：编译看左边，运行看右边。**
+
+
 
 # 四种权限修饰符
 

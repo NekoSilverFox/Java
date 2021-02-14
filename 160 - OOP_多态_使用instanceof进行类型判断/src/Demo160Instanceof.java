@@ -10,7 +10,8 @@
 public class Demo160Instanceof {
     public static void main(String[] args) {
         Animal animal = new Dog();
-        animal.eat(); // eat fish
+        animal.eat(); // Dog eat shit
+//        animal.method(); // ERROR
 
         // 如果希望掉用子类特有方法，需要向下转型
         // 判断一下父类引用animal本来是不是Dog
