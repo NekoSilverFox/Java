@@ -667,14 +667,54 @@ public interface MyInterface extends MyInterfaceA, MyInterfaceB {
 # 四种权限修饰符
 
 Java中有四种权限修饰符：
-public  >   protected   >   (default)   >   private
+	public  >   protected   >   (default)   >   private
 
-同一个类（我自己）        YES         YES             YES             YES
+| 同一个类（我自己）     | YES  | YES  | YES  | YES  |
+| ---------------------- | ---- | ---- | ---- | ---- |
+| 同一个包（我邻居）     | YES  | YES  | YES  | NO   |
+| 不同包子类（我儿子）   | YES  | YES  | NO   | NO   |
+| 不同包非子类（陌生人） | YES  | NO   | NO   | NO   |
 
-同一个包（我邻居）        YES         YES             YES             NO
+注意事项：(default) 并不是关键字 `default`，而是根本不写。
 
-不同包子类（我儿子）       YES         YES             NO              NO
+- ```
+  定义一个类的时候，权限修饰符规则：
+      1. 外部类：public / (default)
+      2. 成员内部类：public / protected / (default) / private
+      3. 局部内部类：什么都不能写
+  ```
 
-不同包非子类（陌生人）      YES         NO              NO              NO
 
-注意事项：(default)并不是关键字“default”，而是根本不写。
+
+# 内部类
+
+## 局部内部类
+
+```java
+/*
+局部内部类，如果希望访问所在方法的局部变量，那么这个局部变量必须是【有效final的】。
+
+备注：从Java 8+开始，只要局部变量事实不变，那么final关键字可以省略。
+
+原因：
+    1. new出来的对象在堆内存当中。
+    2. 局部变量是跟着方法走的，在栈内存当中。
+    3. 方法运行结束之后，立刻出栈，局部变量就会立刻消失。
+    4. 但是new出来的对象会在堆当中持续存在，直到垃圾回收消失。
+ */
+
+public class MyOuter {
+
+    public void methodOuter() {
+        final int num = 10; // 所在方法的局部变量
+        // num = 20;
+        class Inner {
+            public void methodInner () {
+                System.out.println(num);
+            }
+        }
+
+    }
+
+}
+```
