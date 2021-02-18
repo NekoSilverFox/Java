@@ -16,6 +16,8 @@
 
 `Ctrl + Alt + Ins` 增加新文件
 
+`Ctrl + Alt + /` 块注释
+
 # 关键字
 
 ### extends
