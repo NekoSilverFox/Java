@@ -18,11 +18,13 @@
 
 `Ctrl + Alt + /` 块注释
 
+`Shift + Tab` 减少缩进
+
 # 关键字
 
 ### extends
 
-- 译为：延伸、推广
+- 译为：延伸、推广、（在Python作为列表的拓展使用）
 
 - 在继承的时候使用
 
@@ -112,7 +114,7 @@
 
 - `interface` 译为：接口，交互界面
 
-- `implements` 译为：执行履行，在对接口进行实现时使用
+- `implements` 译为：执行履行，**在对接口进行实现时使用**
 
 - 接口就是多个类的公共规范。
   接口是一种引用数据类型，最重要的内容就是其中的：抽象方法。
@@ -240,6 +242,8 @@
 
 ---
 
+### default - 接口中的默认方法
+
 【接口中包含**默认**方法】代码示例：
 
 ```java
@@ -287,17 +291,19 @@ public class MyInterfaceDefaultB implements MyInterfaceDefault{
 
 ---
 
+### static 接口中的静态方法
+
 【接口中包含**静态**方法】代码示例：
 
 ```java
 》》》》》 接口定义：
 /*
-从Java 8开始，接口当中允许定义静态方法。
-格式：
-public static 返回值类型 方法名称(参数列表) {
-    方法体
-}
-提示：就是将abstract或者default换成static即可，带上方法体。
+    从Java 8开始，接口当中允许定义静态方法。
+    格式：
+        public static 返回值类型 方法名称(参数列表) {
+            方法体
+        }
+    提示：就是将abstract或者default换成static即可，带上方法体。
  */
 
 public interface MyInterfaceStatic {
@@ -313,10 +319,10 @@ public class MyInterfaceStaticImpl implements MyInterfaceStatic {
 
 》》》》》 使用：
         /*
-        注意事项：不能通过接口实现类的对象来调用接口当中的静态方法。
-        正确用法：通过接口名称，直接调用其中的静态方法。
-        格式：
-        接口名称.静态方法名(参数);
+            注意事项：不能通过接口实现类的对象来调用接口当中的静态方法。
+            正确用法：通过接口名称，直接调用其中的静态方法。
+            格式：
+            	接口名称.静态方法名(参数);
          */
         System.out.println("===========");
         // 错误写法！
@@ -749,7 +755,7 @@ public class MyOuter {
                   强调：匿名内部类和匿名对象不是一回事！！！
        4. 匿名对象，在【调用方法】的时候，只能调用唯一一次。
 
-# day01【Object类、常用API】
+# Object类、常用API
 
 ## 主要内容
 

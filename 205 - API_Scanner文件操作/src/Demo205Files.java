@@ -12,5 +12,6 @@ public class Demo205Files {
 
         fileOut.println("123");
         fileOut.println(321);;
+
     }
 }
