@@ -21,10 +21,10 @@ public class Demo173ObjectToString {
         String s = p.toString();
         System.out.println(s);
 
-        //直接打印对象的名字,其实就是调用对象的toString  p=p.toString();
+        // 直接打印对象的名字,其实就是调用对象的toString  p=p.toString();
         System.out.println(p);//com.itheima.demo01.Object.Person@5f150435 | abc | Person{name=张三 ,age=18}
 
-        //看一个类是否重写了toString,直接打印这个类的对象即可,如果没有重写toString方法那么打印的是对象的地址值
+        // 看一个类是否重写了toString,直接打印这个类的对象即可,如果没有重写toString方法那么打印的是对象的地址值
         Random r = new Random();
         System.out.println(r);//java.util.Random@3f3afe78  没有重写toString方法
 

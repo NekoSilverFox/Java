@@ -70,7 +70,8 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
 
-        //getClass() != o.getClass() 使用反射技术,判断o是否是Person类型  等效于 obj instanceof Person
+        // getClass() != o.getClass() 使用反射技术,判断o是否是Person类型  等效于 obj instanceof Person
+        // 使用 IDEA 自动生成的那个比较好
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
         return age == person.age && Objects.equals(name, person.name);
