@@ -23,6 +23,8 @@
         1 天 = 24 × 60 × 60 = 86400 秒  = 86400 x 1000 = 86400000毫秒
  */
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Demo240Date {
@@ -55,5 +57,9 @@ public class Demo240Date {
          */
         long date3 = date.getTime();
         System.out.println(date3);  // 和 System.currentTimeMillis() 效果一样
+
+
+        DateFormat dateFormat = new SimpleDateFormat();
+
     }
 }
