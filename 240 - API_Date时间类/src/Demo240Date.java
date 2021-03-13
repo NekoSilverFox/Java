@@ -52,11 +52,17 @@ public class Demo240Date {
 
 
         /*
+            toLocaleString() 代表获取当前时间
+         */
+        Date date3 = new Date(3000L);
+        System.out.println(date3.toLocaleString());  // 2021年3月13日 下午3:51:59
+
+        /*
             long getTime() 把日期转换为毫秒值(相当于System.currentTimeMillis()方法)
               返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数。
          */
-        long date3 = date.getTime();
-        System.out.println(date3);  // 和 System.currentTimeMillis() 效果一样
+        long date4 = date.getTime();
+        System.out.println(date4);  // 和 System.currentTimeMillis() 效果一样
 
 
         DateFormat dateFormat = new SimpleDateFormat();
