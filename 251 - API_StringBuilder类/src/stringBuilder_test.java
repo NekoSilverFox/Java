@@ -44,5 +44,23 @@ public class stringBuilder_test {
          */
         bu1.append("1").append('ф').append(321).append("中国");
         System.out.println(bu1);  // 123false中1ф321中国
+
+        /** 逆序 */
+        bu1.reverse();
+        System.out.println(bu1);  // 国中123ф1中eslaf321
+
+
+        /**
+         StringBuilder和String可以相互转换:
+           String->StringBuilder:可以使用StringBuilder的构造方法
+            StringBuilder(String str) 构造一个字符串生成器，并初始化为指定的字符串内容。
+            StringBuilder->String:可以使用StringBuilder中的toString方法
+            public String toString()：将当前StringBuilder对象转换为String对象。
+         */
+        String str = "Hello";
+        StringBuilder sb = new StringBuilder(str);
+        sb.append(" World");
+        str = sb.toString();
+        System.out.println(str);
     }
 }
