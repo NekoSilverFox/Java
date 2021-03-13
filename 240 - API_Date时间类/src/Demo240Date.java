@@ -55,7 +55,10 @@ public class Demo240Date {
             toLocaleString() 代表获取当前时间
          */
         Date date3 = new Date(3000L);
-        System.out.println(date3.toLocaleString());  // 2021年3月13日 下午3:51:59
+        System.out.println(date3.toLocaleString());  // 【已过时】 2021年3月13日 下午3:51:59
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");  // 应该用 sdf 方法
+        System.out.println(sdf.format(date));
+
 
         /*
             long getTime() 把日期转换为毫秒值(相当于System.currentTimeMillis()方法)
