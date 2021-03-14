@@ -45,9 +45,9 @@ public class iterator_use {
                 Iterator<E>接口也是有泛型的,迭代器的泛型跟着集合走,集合是什么泛型,迭代器就是什么泛型
          */
         //多态      接口            实现类对象
-        Iterator<String> it = coll_str.iterator();
+        Iterator<String> it = coll_str.iterator(); // 【重点】 返回 -1 的位置（指针）
 
-        boolean is_em = it.hasNext();  // 【重点】 如果指针指向处有元素就会返回一个true
+        boolean is_em = it.hasNext();  // 【重点】 如果指针指向处有【下一个】元素就会返回一个true
         System.out.println(is_em);  // true
         String str = it.next();  // 【重点】 获取元素，并将指针移动一位
         System.out.println(str);  // Silverfox
@@ -65,7 +65,25 @@ public class iterator_use {
             System.out.println(it2.next());
         }
 
+        // 增强 for 循环(foreach)，【重点】：注意，遍历时不能对集合进行删减操作
+        /**
+         * 目标只能是 Collection 集合或者数组
+        增强for循环:底层使用的也是迭代器,使用for循环的格式,简化了迭代器的书写
+        是JDK1.5之后出现的新特性
+        Collection<E>extends Iterable<E>:所有的单列集合都可以使用增强for
+        public interface Iterable<T>实现这个接口允许对象成为 "foreach" 语句的目标。
 
+        增强for循环:用来遍历集合和数组
+
+        格式:
+            for(集合/数组的数据类型 变量名: 集合名/数组名){
+                sout(变量名);
+        }
+         */
+        System.out.println("-------------------------");
+        for (String i : coll_str) {
+            System.out.println(i);
+        }
 
 
     }
