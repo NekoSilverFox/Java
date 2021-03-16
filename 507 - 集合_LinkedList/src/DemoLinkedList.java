@@ -15,7 +15,7 @@ import java.util.LinkedList;
 /*
     java.util.LinkedList集合 implements List接口
     LinkedList集合的特点:
-        1.底层是一个链表结构:查询慢,增删快；底层是一个双向链表
+        1.底层是一个链表结构:查询慢,增删快；底层是一个【双向链表】
         2.里边包含了大量操作首尾元素的方法
         注意:使用LinkedList集合特有的方法,不能使用多态
 
