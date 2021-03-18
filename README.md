@@ -18,6 +18,8 @@
 
 `Ctrl + Alt + /` 块注释
 
+`Ctrl + /` 行注释
+
 `Shift + Tab` 减少缩进
 
 ## Debug 快捷键
