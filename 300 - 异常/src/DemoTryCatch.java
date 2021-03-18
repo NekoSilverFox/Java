@@ -51,6 +51,9 @@ public class DemoTryCatch {
                                           at DemoTryCatch.main(DemoTryCatch.java:35)
                                       */
         }
+        // 【重点】如果是编译期异常，那么在异常的抛出后，程序依然可以向下执行
+        //       而如果是运行期异常，那么异常在由JVM处理后会发生中断，自己catch不会中断
+        System.out.println("main函数最后的异常");
     }
 
     /*
