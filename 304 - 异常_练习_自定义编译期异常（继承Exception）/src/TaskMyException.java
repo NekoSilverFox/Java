@@ -41,8 +41,9 @@ public class TaskMyException {
         for (String ele : usernames) {
             if (ele.equals(name)) {
                 // true:用户名已经存在,抛出RegisterException异常,告知用户 "该用户名已经被注册";
+//                throw new RegisterException("该用户名已经被注册");
                 try {
-                    throw new RegisterException("该用户名已经被注册");
+                    throw new RegisterException("该用户名已经被注册");  // 【注意】这里的throw是包含在try语句中，有点怪 owo
                 } catch (RegisterException e) {
                     e.printStackTrace();
                     return;  // 【重点】因为编译器异常在异常抛出后还会继续运行程序，所以说要加return使程序终止！
