@@ -33,8 +33,10 @@ public class DemoThread {
         thread.start();
 
         for (int i = 0; i < 20; i++) {
-            System.out.println("Main: " + i);
+            //                                          获取线程名称
+            System.out.println("Main: " + i + " " + Thread.currentThread().getName());
         }
 
+        new MyThread().start();
     }
 }
