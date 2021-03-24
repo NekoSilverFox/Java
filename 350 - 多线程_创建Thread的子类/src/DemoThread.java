@@ -29,14 +29,18 @@ public class DemoThread {
         /* 创建 Thread类的子类 */
         MyThread thread = new MyThread();
 
-        /*调用Thread类中的start方法，开启新的线程，执行Run方法*/
+        /* 调用Thread类中的start方法，开启新的线程，执行Run方法 */
         thread.start();
+
+        /* 使用方法一给线程起名字 */
+        thread.setName("方法一setName起的名字");
+
 
         for (int i = 0; i < 20; i++) {
             //                                          获取线程名称
             System.out.println("Main: " + i + " " + Thread.currentThread().getName());
         }
 
-        new MyThread().start();
+        new MyThread("我是用方法二起的名字").start();
     }
 }
