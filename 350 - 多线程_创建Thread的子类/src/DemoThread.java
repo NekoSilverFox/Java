@@ -41,6 +41,5 @@ public class DemoThread {
             System.out.println("Main: " + i + " " + Thread.currentThread().getName());
         }
 
-        new MyThread("我是用方法二起的名字").start();
     }
 }
