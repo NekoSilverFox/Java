@@ -33,8 +33,6 @@ public class MyThread extends Thread {
     public void run() {
         for (int i = 0; i < 20; i++) {
 
-
-
             /** 获取线程名称
              * 方法一：
              *      在内部使用 getname()
@@ -49,8 +47,14 @@ public class MyThread extends Thread {
              * */
             String name_thread = getName();
             System.out.println("Run:" + i + " " + name_thread);
-
             System.out.println(Thread.currentThread());  // Thread[Thread-1,5,main]
+
+            /* public [static] void sleep(long millis): 使当前正在执行的线程以指定的毫秒数暂停（暂时停止执行） */
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
