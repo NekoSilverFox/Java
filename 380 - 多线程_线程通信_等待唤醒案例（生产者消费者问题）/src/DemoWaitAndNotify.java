@@ -43,7 +43,7 @@ public class DemoWaitAndNotify {
                         System.out.println("消费者：老板，我要吃火烧 qwq");
                         // 调用wait方法,放弃cpu的执行,进入到WAITING状态(无限等待)
                         try {
-                            lockObj.wait();
+                            lockObj.wait();  // 注意：这里的是无参的wait方法
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -75,7 +75,7 @@ public class DemoWaitAndNotify {
 
                         // 【重点】做好包子之后,调用notify方法,唤醒顾客吃包子
                         // 唤醒了线程
-                        lockObj.notify();
+                        lockObj.notify(); // 【重点】如果有多个等待线程,随机唤醒一个
                     }
                 }
             }
