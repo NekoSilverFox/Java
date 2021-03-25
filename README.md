@@ -486,6 +486,11 @@ public class MyInterfaceStaticImpl implements MyInterfaceStatic {
   }
   ```
 
+## Synchronized
+
+- 译为：已同步的
+- 使用：在线程同步时使用
+
 # 变量
 
 - 如果是`float` ，后面要加一个 `F` 。比如：`double num  =3.14F`
