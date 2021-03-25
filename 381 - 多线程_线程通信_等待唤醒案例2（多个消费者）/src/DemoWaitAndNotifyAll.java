@@ -21,7 +21,7 @@
  */
 public class DemoWaitAndNotifyAll {
     public static void main(String[] args) {
-        // 【重点】创见美锁对象，保证唯一
+        // 【重点】创建锁对象，保证唯一
         Object lockObj = new Object();
 
         // 创建一个顾客线程(消费者)
