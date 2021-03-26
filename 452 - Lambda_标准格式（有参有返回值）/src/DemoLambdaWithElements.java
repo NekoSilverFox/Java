@@ -41,6 +41,9 @@ public class DemoLambdaWithElements {
         // 优化省略Lambda
         Arrays.sort(arrPerson, (l, r)->{return l.getAge() - r.getAge();});
 
+        // 继续优化省略（返回值和打括号和分号）
+        Arrays.sort(arrPerson, (l, r)->l.getAge() - r.getAge());
+
 
         for (Person p : arrPerson) {
             System.out.println(p);
