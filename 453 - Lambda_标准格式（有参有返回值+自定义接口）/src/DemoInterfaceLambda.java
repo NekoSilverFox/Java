@@ -33,6 +33,9 @@ public class DemoInterfaceLambda {
 
         // 优化省略Lambda
         invokeCalc(5, 4, (l, r)->{return l + r;});
+
+        // 极简版
+        invokeCalc(5, 4, (l, r)->l + r);
     }
 
 
