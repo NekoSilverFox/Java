@@ -53,6 +53,7 @@ public class DemoBufferedOutputStream {
         bos.flush();
 
         // 5.释放资源(会先调用flush方法刷新数据,第4部可以省略)
+        // 【重点】当释放 BufferedOutputStream 时，创建的 FileOutputStream 也会被顺带的释放，所以不需要再调用函数释放了
         bos.close();
     }
 }
