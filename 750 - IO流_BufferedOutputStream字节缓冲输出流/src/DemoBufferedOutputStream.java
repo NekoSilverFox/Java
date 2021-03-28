@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
  *
  * @Time : 2021/3/28 23:44
  * @Author : NekoSilverfox
- * @FileName: DemoBufferOutputStream
+ * @FileName: DemoBufferedOutputStream
  * @Software: IntelliJ IDEA
  * @Versions: v0.1
  * @Github ：https://github.com/NekoSilverFox
@@ -38,7 +38,7 @@ import java.nio.charset.StandardCharsets;
         4.使用BufferedOutputStream对象中的方法flush,把内部缓冲区中的数据,刷新到文件中
         5.释放资源(会先调用flush方法刷新数据,第4部可以省略)
  */
-public class DemoBufferOutputStream {
+public class DemoBufferedOutputStream {
     public static void main(String[] args) throws IOException {
         // 1.创建FileOutputStream对象,构造方法中绑定要输出的目的地
         FileOutputStream fos = new FileOutputStream("750 - IO流_BufferOutputStream字节缓冲输出流\\output");

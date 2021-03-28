@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
  *
  * @Time : 2021/3/28 23:49
  * @Author : NekoSilverfox
- * @FileName: DemoBufferInputStream
+ * @FileName: DemoBufferedInputStream
  * @Software: IntelliJ IDEA
  * @Versions: v0.1
  * @Github ：https://github.com/NekoSilverFox
@@ -38,7 +38,7 @@ import java.nio.charset.StandardCharsets;
         3.使用BufferedInputStream对象中的方法read,读取文件
         4.释放资源
  */
-public class DemoBufferInputStream {
+public class DemoBufferedInputStream {
     public static void main(String[] args) throws IOException {
         // 1.创建FileInputStream对象,构造方法中绑定要读取的数据源
         // 2.创建BufferedInputStream对象,构造方法中传递FileInputStream对象,提高FileInputStream对象的读取效率
