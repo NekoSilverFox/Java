@@ -1,3 +1,4 @@
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
@@ -41,7 +42,7 @@ public class DemoProperties {
         // 使用setProperty往集合中添加数据
         properties.setProperty("冰糖雪狸", "17");
         properties.setProperty("Fox", "16");
-        properties.setProperty("Cat", "18");
+        properties.setProperty("Антон", "18");
         // prop.put(1,true);  可以，但不推荐使用Map接口的put方法。应该使用特有方法
 
         // 使用stringPropertyNames把Properties集合中的键取出,存储到一个Set集合中
@@ -79,5 +80,37 @@ public class DemoProperties {
         properties.store(fw, "我是一条comments注释");  // 【注意】注释有中文不能正常显示（因为使用的是Unicode编码）
         // 释放资源
         fw.close();
+
+        System.out.println("=============================================");
+
+
+    /*
+        可以使用Properties集合中的方法load,把硬盘中保存的文件(键值对),读取到集合中使用
+        void load(InputStream inStream)
+        void load(Reader reader)
+        参数:
+            InputStream inStream:字节输入流,不能读取含有中文的键值对
+            Reader reader:字符输入流,能读取含有中文的键值对
+        使用步骤:
+            1.创建Properties集合对象
+            2.使用Properties集合对象中的方法load读取保存键值对的文件
+            3.遍历Properties集合
+        注意:
+            1.存储键值对的文件中,键与值默认的连接符号可以使用=,空格(其他符号)
+            2.存储键值对的文件中,可以使用#进行注释,被注释的键值对不会再被读取
+            3.存储键值对的文件中,键与值默认都是字符串,不用再加引号
+     */
+        // 1.创建Properties集合对象
+        Properties read_prop = new Properties();
+
+        // 2.使用Properties集合对象中的方法load读取保存键值对的文件，记得传入一个字符流或者字节流
+        read_prop.load(new FileReader("526 - 集合_Properties基本使用\\output.txt"));
+
+        // 3.遍历Properties
+        Set<String> set2 = read_prop.stringPropertyNames();
+        for (String key : set2) {
+            String value = read_prop.getProperty(key);
+            System.out.println(key + "=" + value);
+        }
     }
 }
