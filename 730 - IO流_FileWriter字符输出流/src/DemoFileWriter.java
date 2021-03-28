@@ -47,7 +47,7 @@ import java.io.IOException;
  */
 public class DemoFileWriter {
     public static void main(String[] args) throws IOException {
-        // 1.创建FileWriter对象,构造方法中绑定要写入数据的目的地\
+        // 1.创建FileWriter对象,构造方法中绑定要写入数据的目的地
         FileWriter fw = new FileWriter("730 - IO流_FileWriter字符输出流\\output.txt");
 
         // 2.使用FileWriter中的方法write,把数据写入到内存缓冲区中(字符转换为字节的过程)
