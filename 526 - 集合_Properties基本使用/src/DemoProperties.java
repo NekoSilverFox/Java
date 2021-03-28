@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
 
@@ -24,7 +26,7 @@ import java.util.Set;
         Properties集合是一个双列集合,key和value默认都是字符串
  */
 public class DemoProperties {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
     /*
         使用Properties集合存储数据,遍历取出Properties集合中的数据
         Properties集合是一个双列集合,key和value默认都是字符串
@@ -37,7 +39,7 @@ public class DemoProperties {
         Properties properties = new Properties();
 
         // 使用setProperty往集合中添加数据
-        properties.setProperty("Silverfox", "17");
+        properties.setProperty("冰糖雪狸", "17");
         properties.setProperty("Fox", "16");
         properties.setProperty("Cat", "18");
         // prop.put(1,true);  可以，但不推荐使用Map接口的put方法。应该使用特有方法
@@ -49,5 +51,33 @@ public class DemoProperties {
             String value = properties.getProperty(key);
             System.out.println(key + "=" + value);
         }
+
+
+
+
+
+    /*
+        可以使用Properties集合中的方法store,把集合中的临时数据,持久化写入到硬盘中存储
+        void store(OutputStream out, String comments)
+        void store(Writer writer, String comments)
+        参数:
+            OutputStream out:字节输出流,不能写入中文
+            Writer writer:字符输出流,可以写中文
+            String comments:注释,用来解释说明保存的文件是做什么用的
+                    不能使用中文,会产生乱码,默认是Unicode编码
+                    一般使用""空字符串
+
+        使用步骤:
+            1.创建Properties集合对象,添加数据
+            2.创建字节输出流/字符输出流对象,构造方法中绑定要输出的目的地
+            3.使用Properties集合中的方法store,把集合中的临时数据,持久化写入到硬盘中存储
+            4.释放资源
+     */
+        // 2.创建字节输出流/字符输出流对象,构造方法中绑定要输出的目的地。注意：字节流不能写中文，字符流可以
+        FileWriter fw = new FileWriter("526 - 集合_Properties基本使用\\output.txt");
+
+        properties.store(fw, "我是一条comments注释");  // 【注意】注释有中文不能正常显示（因为使用的是Unicode编码）
+        // 释放资源
+        fw.close();
     }
 }
