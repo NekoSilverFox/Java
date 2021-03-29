@@ -486,7 +486,7 @@ public class MyInterfaceStaticImpl implements MyInterfaceStatic {
   }
   ```
 
-## Synchronized
+### Synchronized
 
 - 译为：已同步的
 
@@ -533,6 +533,21 @@ public class MyInterfaceStaticImpl implements MyInterfaceStatic {
           }
       }
   }
+  ```
+
+### transient
+
+- 译为：瞬态关键字
+
+- 使用：被transient修饰成员变量,不能被序列化；（参考ObjectInputStream）
+
+- ```java
+  transient关键字:瞬态关键字
+      被transient修饰成员变量,不能被序列化
+      private transient int age;
+      oos.writeObject(new Person("小美女",18));
+      Object o = ois.readObject();
+      Person{name='小美女', age=0}
   ```
 
 # 变量
