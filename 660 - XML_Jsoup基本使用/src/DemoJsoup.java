@@ -25,12 +25,13 @@ public class DemoJsoup {
         String path = "660 - XML_Jsoup基本使用\\students.xml";
 
         // 解析xml文档，加载进内存，获取dom树 --> Document
-        // Document：文本对象。代表内存中的dom树
+        // Document：文本对象。代表内存中的dom树。主要是用他的getXXXX方法获取Elements对象
         // Jsoup：工具类，可以解析html或者xml文档，返回Document
         //                        parse 解析html或者xml文档，返回Document
         //                        parse (String html) 解析HTML或xml字符串
         //                        parse (URL url, int timeoutMillis) 通过网络路径获取指定 HTML 或xml的文档对象
         Document document = Jsoup.parse(new File(path), "utf-8");
+        System.out.println(document);
 
         // 获取元素对象 Element，Elements本质是一个ArrayList<org.jsoup.nodes.Element>
         Elements elements = document.getElementsByTag("name");
