@@ -1,0 +1,6 @@
+<!ELEMENT students (student*)>  <!-- `*` 号代表student对象可以有零到无数个，和正则表达式一样。也可以用 `+` 表示至少有一个-->
+<!ELEMENT student (name, age, sex)>  <!-- 表示student 有 name, age, sex 这些属性-->
+<!ELEMENT name (#PCDATA)>  <!-- #PCDATA 表示 name 是一个字符串 -->
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ATTLIST student number ID #REQUIRED>  <!-- #REQUIRED 表示student的number是【唯一】的 -->

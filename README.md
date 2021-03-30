@@ -7111,6 +7111,21 @@ XML - Extensible Markup Language 可扩展标记语言
      - 和HTML一样
      - 格式：`<!-- 我是一条commant注释 -->`
 
+  7. 约束
+
+     - 规定 xml 文档的书写规则
+     - 作为框架的使用者（程序员）
+       - 能够在xml中引入约束文档
+       - 能够简单地读懂约束文档
+     - 分类
+       - DTD：是一种简单的约束技术
+         - 引入DTD到xml文档中来
+         - 内部DTD：将约束规则定义在xml文档中
+         - 外部DTD：将约束规则定义在外部的DTD文件中，本地文件或网络等
+           - 本地：`<!DOCTYPE 根标签名 SYSTEM "student.dtd">`
+           - 网络：`<!DOCTYPE 根标签名 PUBLIC "DTD文件名字" "DTD文件的位置URL">`
+       - Schema：是一种复杂的约束技术
+
   ```xml
   <?xml version='1.0' ?>
   <root>
