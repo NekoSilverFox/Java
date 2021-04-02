@@ -7057,9 +7057,11 @@ public class PrintDemo {
 XML - Extensible Markup Language 可扩展标记语言
 
 - **可扩展** - 标签都是自定义的
+
 - 功能：
   - 作为配置文件
   - 方便网络中传输
+  
 - 与HTML区别：
   - 共同的父亲w3c（万维网联盟）
   - HTML对语法要求不严格，不能自定义标签，标签是预定义的；是用于展示数据的
@@ -7144,4 +7146,44 @@ XML - Extensible Markup Language 可扩展标记语言
   </root>
   ```
 
+  # Spring
+
+  ## Spring  的优点及缺点
+
+  - Spring 是一个开源的免费的框架（容器）
+  - Spring 是一个轻量级的、非入侵式的框架
+  - **控制反转（IoC），面向切面编程（AOP）**
+  - 支持事物处理，对框架整合的支持
+
+  总结：**Spring 就是一个轻量级的控制反转（IoC）和面向切面编程（AOP）的框架**
+
+  ## 下载及使用
+
+  ```
+  下载Spring的各个版本：
+  https://repo.spring.io/release/org/springframework/spring
   
+  配置：
+  https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+  
+  官方文档：
+  https://spring.io/projects/spring-framework#learn
+  
+  Spring 5.1.3中文文档：
+  https://www.docs4dev.com/docs/zh/spring-framework/5.1.3.RELEASE/reference
+  ```
+
+  Spring 的学习过程：
+
+  现代化的Java开发就是基于Spring的开发
+
+  ![image-20210402174226253](C:\Users\mi\AppData\Roaming\Typora\typora-user-images\image-20210402174226253.png)
+
+- Spring Boot
+  - 一个快速开发的脚手架
+  - 基于 Spring Boot 可以快速的开发单个微服务
+  - 约定大于配置！
+- Spring Cloud
+  - Spring Cloud 是基于 Spring Boot 的使用
+
+学习Spring Boot的前提是需要完全掌握Spring及Spring MVC！承上启下的作用！
