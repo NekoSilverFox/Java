@@ -16,6 +16,10 @@ import main.com.foxthere.dao.UserDaoOracleImpl;
 import main.com.foxthere.service.UserService;
 import main.com.foxthere.service.UserServiceImpl;
 
+/**
+ * IoC (Inversion of Control) 控制反转，是一种设计思想，DI（依赖注入）是实现IoC的一种方法
+ */
+
 public class MyTest {
     public static void main(String[] args) {
         UserServiceImpl userService = new UserServiceImpl();
