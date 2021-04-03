@@ -17,8 +17,8 @@ public class User {
         System.out.println("调用了User的无参构造！");
     }
 
-    public User(String user) {
-        this.name = user;
+    public User(String user_con) {
+        this.name = user_con;
     }
 
     @Override
@@ -32,8 +32,8 @@ public class User {
         return name;
     }
 
-    public void setUser(String user) {
-        this.name = user;
+    public void setUser(String user_set) {
+        this.name = user_set;
     }
 
     public void show() {
