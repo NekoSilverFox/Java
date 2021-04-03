@@ -7184,6 +7184,24 @@ XML - Extensible Markup Language 可扩展标记语言
   - 基于 Spring Boot 可以快速的开发单个微服务
   - 约定大于配置！
 - Spring Cloud
+  
   - Spring Cloud 是基于 Spring Boot 的使用
 
 学习Spring Boot的前提是需要完全掌握Spring及Spring MVC！承上启下的作用！
+
+## IoC 创建对象的方式
+
+1. 【默认】使用无参构造创建对象
+
+2. 使用有参构造创建对象
+
+   - 使用下标的方式创建 
+
+   ```java
+       <!-- 第一种，通过下标赋值 -->
+           <bean id="user" class="com.foxthere.User">
+               <constructor-arg index="0" value="冰糖雪狸学Java"/>
+           </bean>
+   ```
+
+   
