@@ -7197,7 +7197,7 @@ XML - Extensible Markup Language 可扩展标记语言
 
    - 使用下标的方式创建 
 
-   ```java
+   ```xml
        <!-- 第一种，通过下标赋值 -->
            <bean id="user" class="com.foxthere.User">
                <constructor-arg index="0" value="冰糖雪狸学Java"/>
@@ -7206,7 +7206,7 @@ XML - Extensible Markup Language 可扩展标记语言
 
    - 通过类型创建（不建议使用）
 
-   ```java
+   ```xml
        <!-- 第二种，通过类型创建
            不建议使用！！
            一旦类型写错了或者有两个相同类型的就没法创建了
@@ -7222,7 +7222,7 @@ XML - Extensible Markup Language 可扩展标记语言
 
 ## 别名
 
-```java
+```xml
 <!-- 别名，如果添加了别名，我们也可以使用别名获取到这个对象 -->
     <alias name="userT" alias="alias_userT"/>
 ```
@@ -7242,6 +7242,95 @@ XML - Extensible Markup Language 可扩展标记语言
 - applicationContext.xml
 
 ```
-
+    <import resource="beans.xml"/>
+    <import resource="beans2.xml"/>
+    <import resource="beans3.xml"/>
 ```
 
+## 依赖注入
+
+### 构造器注入
+
+前面说了
+
+### Set 方式注入【重点】
+
+- 依赖注入
+  - 依赖：bean对象的创建依赖于容器
+  - 注入：bean中的所有属性，由容器注入
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address_Silverfox" class="com.foxthere.Address">
+        <property name="address" value="圣彼得堡"/>
+    </bean>
+
+    <bean id="Silverfox" class="com.foxthere.Student">
+        <!-- 按照普通方法注入 -->
+        <property name="name" value="冰糖雪狸"/>
+
+        <!-- Address address; -->
+        <property name="address" ref="address_Silverfox"/>
+
+        <!-- String[] books; -->
+        <property name="books" >
+            <array>
+                <value>《计算机组成原理》</value>
+                <value>《高等数学》</value>
+                <value>《线性代数》</value>
+            </array>
+        </property>
+
+        <!-- List<String> hobbies; -->
+        <property name="hobbies">
+            <list>
+                <value>吃饭</value>
+                <value>睡觉</value>
+                <value>发呆</value>
+            </list>
+        </property>
+
+        <!-- Map<String, String> card; -->
+        <property name="card">
+            <map>
+                <entry key="学生卡" value="186943"/>
+                <entry key="身份证" value="19461986616563163"/>
+                <entry key="银行卡" value="46565442266"/>
+            </map>
+        </property>
+
+        <!-- Set<String> games; -->
+        <property name="games">
+            <set>
+                <value>糖豆人</value>
+                <value>SAR</value>
+                <value>Minecraft</value>
+            </set>
+        </property>
+
+        <!-- String wife; -->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!-- Properties info; -->
+        <property name="info">
+            <props>
+                <prop key="Web">www.foxthere.com</prop>
+                <prop key="E-Mail">dasfwa@gmail.com</prop>
+                <prop key="password">gadefawfas</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
+```
+
+
+
+### 拓展方式注入

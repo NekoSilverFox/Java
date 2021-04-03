@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address_Silverfox" class="com.foxthere.Address">
+        <property name="address" value="圣彼得堡"/>
+    </bean>
+
+    <bean id="Silverfox" class="com.foxthere.Student">
+        <!-- 按照普通方法注入 -->
+        <property name="name" value="冰糖雪狸"/>
+
+        <!-- Address address; -->
+        <property name="address" ref="address_Silverfox"/>
+
+        <!-- String[] books; -->
+        <property name="books" >
+            <array>
+                <value>《计算机组成原理》</value>
+                <value>《高等数学》</value>
+                <value>《线性代数》</value>
+            </array>
+        </property>
+
+        <!-- List<String> hobbies; -->
+        <property name="hobbies">
+            <list>
+                <value>吃饭</value>
+                <value>睡觉</value>
+                <value>发呆</value>
+            </list>
+        </property>
+
+        <!-- Map<String, String> card; -->
+        <property name="card">
+            <map>
+                <entry key="学生卡" value="186943"/>
+                <entry key="身份证" value="19461986616563163"/>
+                <entry key="银行卡" value="46565442266"/>
+            </map>
+        </property>
+
+        <!-- Set<String> games; -->
+        <property name="games">
+            <set>
+                <value>糖豆人</value>
+                <value>SAR</value>
+                <value>Minecraft</value>
+            </set>
+        </property>
+
+        <!-- String wife; -->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!-- Properties info; -->
+        <property name="info">
+            <props>
+                <prop key="Web">www.foxthere.com</prop>
+                <prop key="E-Mail">dasfwa@gmail.com</prop>
+                <prop key="password">gadefawfas</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
