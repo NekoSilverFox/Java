@@ -7204,4 +7204,16 @@ XML - Extensible Markup Language 可扩展标记语言
            </bean>
    ```
 
+   - 通过类型创建（不建议使用）
+
+   ```java
+       <!-- 第二种，通过类型创建
+           不建议使用！！
+           一旦类型写错了或者有两个相同类型的就没法创建了
+       -->
+       <bean id="user" class="com.foxthere.User">
+           <constructor-arg type="java.lang.String" value="冰糖雪狸学通过类型创建"/>
+       </bean>
+   ```
+
    
