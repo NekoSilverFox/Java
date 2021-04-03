@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 第一种，通过下标赋值 -->
+        <bean id="user" class="com.foxthere.User">
+            <constructor-arg index="0" value="冰糖雪狸学Java"/>
+        </bean>
+
+</beans>

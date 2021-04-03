@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    【重点】使用Spring来创建对象，在Spring中这些都称为Bean
+
+    传统上我们是这么创建对象的：
+        类型 变量名 = new 类型();
+        Hello hello = new Hello();
+
+    使用了Spring之后：
+        - 一个 bean 就相当创建了一个对象
+        id       == 变量名（设置了个标签）
+        class    == new 的对象
+        property == 相当于给变量中的属性设置一个值
+
+        value : 具体的值，具体的数据类型
+        ref : 引用Spring容器中创建好的对象
+    -->
+    <bean id="hello" class="com.foxthere.Hello">
+        <property name="str" value="我是Spring"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- services -->
+
+    <bean id="mySQLImpl" class="com.foxthere.dao.UserDaoMySQLImpl"/>
+    <bean id="myOracleImpl" class="com.foxthere.dao.UserDaoOracleImpl"/>
+
+    <bean id="userServiceImpl" class="com.foxthere.service.UserServiceImpl">
+        <property name="userDao" ref="myOracleImpl"/>  <!--注入-->
+    </bean>
+
+    <!--
+        value : 具体的值，具体的数据类型
+        ref : 引用Spring容器中创建好的对象
+    -->
+
+</beans>

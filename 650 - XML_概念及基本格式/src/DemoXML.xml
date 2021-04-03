@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml-stylesheet type="text/css" href="type.css"?>
+<!--我是一条注释-->
+<root>
+    <user uid='1'>
+        <name>Silverfox</name>
+        <age>17</age>
+        <gender>M</gender>
+    </user>
+
+    <user uid='2'>
+        <name>RedFox</name>
+        <age>14</age>
+        <gender>M</gender>
+    </user>
+</root>
