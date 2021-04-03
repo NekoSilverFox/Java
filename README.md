@@ -7333,4 +7333,42 @@ XML - Extensible Markup Language 可扩展标记语言
 
 
 
-### 拓展方式注入
+### 拓展方式注入 （通过c或p命名空间注入）
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    p 命名空间的约束：（property）
+    xmlns:p="http://www.springframework.org/schema/p"
+
+    c 命名空间的约束：（constructor-arg）：
+    xmlns:c="http://www.springframework.org/schema/c"
+     -->
+
+    <!-- 通过p命名空间注入，其实是刚方便的调用了set方法 -->
+    <bean id="Silverfox" class="com.foxthere.Student" p:name="冰糖雪狸" p:age="17">
+    </bean>
+
+    <!-- 通过c命名空间注入，其实是刚方便的调用了构造方法 -->
+    <bean id="Fox" class="com.foxthere.Student" c:name="Alisa" c:age="14"/>
+
+</beans>
+```
+
+注意，c或p命名空间不能直接使用，需要导入约束：
+
+```xml
+    p 命名空间的约束：（property）
+    xmlns:p="http://www.springframework.org/schema/p"
+
+    c 命名空间的约束：（constructor-arg）：
+    xmlns:c="http://www.springframework.org/schema/c"
+```
+
