@@ -1,4 +1,5 @@
 import com.foxthere.User;
+import com.foxthere.UserT;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,7 +21,16 @@ public class Demo909Constructor {
         User user = (User) context.getBean("user");  // 【创建】在创建一个的同时UserT也被一起创建了，所以说在配置文件加载时，容器中管理的对象就已经初始化了
         user.show();
 
+        System.out.println("===============================");
+
         User user2 = (User) context.getBean("user");
+        user2.show();
         System.out.println(user2 == user);  // true 【重点】说明只实例化了一份对象
+
+        System.out.println("===============================");
+
+        // 使用别名获取到这个对象
+        UserT alias_userT = (UserT) context.getBean("alias_userT");
+        alias_userT.show();
     }
 }

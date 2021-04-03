@@ -31,4 +31,7 @@
         <property name="user" value="冰糖雪狸学直接通过参数名来设置UserT"/>
     </bean>
 
+    <!-- 别名，如果添加了别名，我们也可以使用别名获取到这个对象 -->
+    <alias name="userT" alias="alias_userT"/>
+
 </beans>
