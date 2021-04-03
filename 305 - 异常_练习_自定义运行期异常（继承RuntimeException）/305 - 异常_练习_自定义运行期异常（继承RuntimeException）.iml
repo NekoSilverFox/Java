@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../305 - 异常_练习_自定义运行期异常（继承RuntimeException）">
+      <sourceFolder url="file://$MODULE_DIR$/../305 - 异常_练习_自定义运行期异常（继承RuntimeException）/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="9" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
