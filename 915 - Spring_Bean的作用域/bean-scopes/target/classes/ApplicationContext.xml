@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--        <bean id="Silverfox" class="com.foxthere.Student" scope="singleton">  &lt;!&ndash; 默认是单例模式，每个对象只有一个是共享的 &ndash;&gt;-->
+        <bean id="Silverfox" class="com.foxthere.Student" scope="prototype">  <!-- 原型模式，每get一次就创建一个Bean -->
+            <property name="name" value="冰糖雪狸"/>
+            <property name="age" value="17"/>
+        </bean>
+
+</beans>

@@ -7372,3 +7372,26 @@ XML - Extensible Markup Language 可扩展标记语言
     xmlns:c="http://www.springframework.org/schema/c"
 ```
 
+## Bean的作用域
+
+![image-20210404005752803](C:\Users\mi\AppData\Roaming\Typora\typora-user-images\image-20210404005752803.png)
+
+1. 单例模式 - singleton（Spring默认机制）
+
+   Spring的默认机制，无论 getBean 多少次最终只有一个对象，节省资源。建议平时使用，但是在多线程的时候会造成效率降低
+
+   ```xml
+   <bean id="..." class="..." scope="singleton">
+   ```
+
+2. 原型模式 - prototype
+
+   每次从容器 getBean 的时候，都会产生一个新的对象！
+
+   建议在多线程的时候使用。平时不建议使用，因为开销大
+
+   ```xml
+   <bean id="Silverfox" class="com.foxthere.Student" scope="prototype">
+   ```
+
+3. 其他的 reqest、session、application 只能在 web 开发中使用！
