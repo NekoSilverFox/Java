@@ -7222,6 +7222,26 @@ XML - Extensible Markup Language 可扩展标记语言
 
 ## 别名
 
+```java
+<!-- 别名，如果添加了别名，我们也可以使用别名获取到这个对象 -->
+    <alias name="userT" alias="alias_userT"/>
+```
+
 
 
 ## Bean 的配置
+
+
+
+## import 的使用
+
+这个import，一般用于团队开发，他可以将多个配置文件，导入合并为一个
+
+假设，现在项目中有多个人开发，这三个人负责不同类的开发，不同类需要注册到不同的bean中，我们可以利用import将所有人的bean.xml合并为一个总的！
+
+- applicationContext.xml
+
+```
+
+```
+

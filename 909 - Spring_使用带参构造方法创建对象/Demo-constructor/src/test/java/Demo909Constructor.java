@@ -16,14 +16,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Demo909Constructor {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         User user = (User) context.getBean("user");  // 【创建】在创建一个的同时UserT也被一起创建了，所以说在配置文件加载时，容器中管理的对象就已经初始化了
         user.show();
 
         System.out.println("===============================");
 
-        User user2 = (User) context.getBean("user");
+        User user2 = (User) context.getBean("user3");
         user2.show();
         System.out.println(user2 == user);  // true 【重点】说明只实例化了一份对象
 
