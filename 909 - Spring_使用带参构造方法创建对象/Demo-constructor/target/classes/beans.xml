@@ -24,7 +24,11 @@
     这里不是通过有参的构造器来构造的，而是通过set方法来调用的
     -->
     <bean id="user" class="com.foxthere.User">
-        <property name="user" value="冰糖雪狸学直接通过参数名来设置"/>
+        <property name="user" value="冰糖雪狸学直接通过参数名来设置User"/>
+    </bean>
+
+    <bean id="userT" class="com.foxthere.UserT">
+        <property name="user" value="冰糖雪狸学直接通过参数名来设置UserT"/>
     </bean>
 
 </beans>
