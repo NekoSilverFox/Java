@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    <bean id="dog" class="com.foxthere.Dog"/>
+    <bean id="cat123" class="com.foxthere.Cat"/>
+    -->
+
+    <!-- 用于 byType，甚至不用写 bean 的 id -->
+    <bean class="com.foxthere.Dog"/>
+    <bean class="com.foxthere.Cat"/>
+
+
+    <bean id="Silverfox" class="com.foxthere.Person" autowire="byType">
+        <!-- 最后一个参数是自动装配，输入的是自动装配的类型
+        byName：会自动在容器上下文中查找，和自己对象set方法后面的参数名对应的 BeanID！
+        所以 Dog 只能起名为 dog
+            Cat 只能起名为 cat
+            （区分大小写）
+
+
+        byType：会自动在容器上下文中查找，和自己对象属性类型相同的Bean
+        因为是根据类型来的，甚至需要给Bean设置id
+
+        弊端：需要保障这个类型全局唯一（保证所有bean的id唯一，而且这个bean需要和自动注入的属性的set方法的值一致）
+        -->
+
+
+
+        <property name="name" value="冰糖雪狸"/>
+<!--        <property name="dog" ref="WangCai"/>-->
+<!--        <property name="cat" ref="Tom"/>-->
+    </bean>
+
+</beans>

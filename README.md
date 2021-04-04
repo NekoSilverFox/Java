@@ -7395,3 +7395,63 @@ XML - Extensible Markup Language 可扩展标记语言
    ```
 
 3. 其他的 reqest、session、application 只能在 web 开发中使用！
+
+## Bean的自动装配
+
+- 自动装配是Spring满足bean依赖的一种方式
+- Spring会在上下文中自动寻找，并自动给bean装配属性
+
+
+
+在Spring中有三种方式
+
+	1. 在 xml 中显示的配置
+ 	2. 在 java 中显示的配置
+ 	3. **隐式的自动装配 Bean 【重点】**
+
+### byName
+
+```xml
+    <bean id="dog" class="com.foxthere.Dog"/>
+    <bean id="cat" class="com.foxthere.Cat"/>
+
+
+    <bean id="Silverfox" class="com.foxthere.Person" autowire="byName">  <!-- 最后一个参数是自动装配，输入的是自动装配的类型
+        byName：会自动在容器上下文中查找，和自己对象set方法后面的参数名对应的 BeanID！
+        所以 Dog 只能起名为 dog
+            Cat 只能起名为 cat
+            （区分大小写）
+    -->
+```
+
+### byType
+
+```xml
+
+    <!--
+    <bean id="dog" class="com.foxthere.Dog"/>
+    <bean id="cat123" class="com.foxthere.Cat"/>
+    -->
+
+    <!-- 用于 byType，甚至不用写 bean 的 id -->
+    <bean class="com.foxthere.Dog"/>
+    <bean class="com.foxthere.Cat"/>
+
+
+    <bean id="Silverfox" class="com.foxthere.Person" autowire="byType">
+        <!-- 最后一个参数是自动装配，输入的是自动装配的类型
+
+        byType：会自动在容器上下文中查找，和自己对象属性类型相同的Bean
+        因为是根据类型来的，甚至需要给Bean设置id
+
+        弊端：需要保障这个类型全局唯一（保证所有bean的id唯一，而且这个bean需要和自动注入的属性的set方法的值一致）
+        -->
+
+
+
+        <property name="name" value="冰糖雪狸"/>
+<!--        <property name="dog" ref="WangCai"/>-->
+<!--        <property name="cat" ref="Tom"/>-->
+    </bean>
+```
+
