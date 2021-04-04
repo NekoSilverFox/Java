@@ -10,13 +10,13 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
-    <output url="file://$MODULE_DIR$/../spring-autowired/target/classes" />
-    <output-test url="file://$MODULE_DIR$/../spring-autowired/target/test-classes" />
-    <content url="file://$MODULE_DIR$/../spring-autowired">
-      <sourceFolder url="file://$MODULE_DIR$/../spring-autowired/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../spring-autowired/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../spring-autowired/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/../spring-autowired/target" />
+    <output url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired/target/classes" />
+    <output-test url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired/target/test-classes" />
+    <content url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired">
+      <sourceFolder url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../917 - Spring_Bean的自动装配(通过byName和byType)/spring-autowired/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
