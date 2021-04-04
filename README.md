@@ -7782,8 +7782,82 @@ JavaConfig 是 Spring 的一个子项目，在Spring4之后，他成为了一个
 
 
 
-## 代理模式
+## 代理模式（proxy）
 
 为什么要学习代理模式？
 
 因为这就是 Spring AOP 的底层
+
+
+
+代理模式的好处：
+
+- 可以是真实角色的操作更加纯粹，不用于关注一些公共业务 
+
+- 公共也就交给代理角色，实现了业务的分工
+
+- 公共业务发生拓展的时候，方便集中管理 
+
+缺点：
+
+- 一个真实角色就会产生一个代理角色；代码量会翻倍，开发效率会变低
+
+
+
+代码步骤：
+
+1. 接口
+
+   ```java
+   // 租房
+   public interface Rent {
+       public void Rent();
+   }
+   ```
+
+   
+
+2. 真实角色（房东）
+
+   ```java
+   // 房东
+   public class Master implements Rent {
+       public void Rent() {
+   		sout("房东要出租房子了");
+       }
+   }
+   ```
+
+   
+
+3. 代理角色（中介）
+
+   ```java
+   // 中介
+   public class Proxy implement Rent {
+   	private Master master;
+       
+       public Proxy() {};
+       
+       public Proxy(Master master) { this.master = master };
+       
+       public void rent() {
+           ...
+       }
+       
+       ...
+   }
+   ```
+
+   
+
+4. 客户端访问代理角色
+
+### 静态代理
+
+角色分析：
+
+- 抽象角色：一般会使用接口或者抽象类来解决
+- 真实角色：被代理的角色
+- 代理角色：代理真实的角色，代理真实角色后，我们一般会做一些附属操作
+- 客户：访问代理对象的人
