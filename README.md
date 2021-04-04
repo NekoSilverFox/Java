@@ -7689,8 +7689,101 @@ xml 与 注解的最佳实现：
   ```
 
 
+
+
 ### 使用Java的方式配置Spring
 
 我们完全不需要Spring配置xml了，全权交给Java来做
 
 JavaConfig 是 Spring 的一个子项目，在Spring4之后，他成为了一个核心功能
+
+- 实体类
+
+  ```java
+  package com.foxthere.pojo;
+  
+  
+  import org.springframework.beans.factory.annotation.Value;
+  import org.springframework.stereotype.Component;
+  
+  
+  // 这里有个注解的意思是，就是说明这个类被Spring接管了，注册到了容器中
+  @Component
+  public class User {
+      @Value("冰糖雪狸")
+      private String name;
+  
+      @Override
+      public String toString() {
+          return "User{" +
+                  "name='" + name + '\'' +
+                  '}';
+      }
+  
+      public String getName() {
+          return name;
+      }
+  
+      public void setName(String name) {
+          this.name = name;
+      }
+  }
+  
+  ```
+
+- 配置文件
+
+  ```java
+  package com.foxthere.config;
+  
+  import com.foxthere.pojo.User;
+  import org.springframework.context.annotation.Bean;
+  import org.springframework.context.annotation.Configuration;
+  
+  // 这个也会被Spring托管，注册到容器中，因为他本来就是一个 @Component
+  // @Configuration 代表这是一个配置类，就是 ApplicationContext.xml
+  @Configuration
+  public class UserConfig {
+  
+      // 注册一个Bean，就相当于我们之前写的一个Bean标签
+      // 这个方法的名字，就相当于Bean标签的属性
+      // 这个地方的返回值，就相当于Bean标签中的class属性
+      @Bean
+      public User getUser() {
+          return new User();  // 返回要注入到Bean的对象
+      }
+  }
+  
+  ```
+
+- 测试类
+
+  ```java
+  import com.foxthere.config.UserConfig;
+  import com.foxthere.pojo.User;
+  import org.springframework.context.ApplicationContext;
+  import org.springframework.context.ConfigurableApplicationContext;
+  import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+  
+  public class DemoConfiguration {
+      public static void main(String[] args) {
+  
+          // 如果完全使用了配置类的方式去做，我们就只能通过 ApplicationContext 上下文来获取容器，通过配置类的class对象来加载
+          ApplicationContext context = new AnnotationConfigApplicationContext(UserConfig.class);
+          User user = (User) context.getBean("getUser2");
+          System.out.println(user.getName());
+  
+      }
+  }
+  
+  ```
+
+  
+
+
+
+## 代理模式
+
+为什么要学习代理模式？
+
+因为这就是 Spring AOP 的底层
