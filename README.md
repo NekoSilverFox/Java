@@ -7406,8 +7406,8 @@ XML - Extensible Markup Language 可扩展标记语言
 在Spring中有三种方式
 
 	1. 在 xml 中显示的配置
- 	2. 在 java 中显示的配置
- 	3. **隐式的自动装配 Bean 【重点】**
+	2. 在 java 中显示的配置
+	3. **隐式的自动装配 Bean 【重点】**
 
 ### byName
 
@@ -7543,3 +7543,154 @@ JDK1.5 支持的注解，Spring2.5就支持了
     - **@Autowired** 通过先通过 byType，如果无法匹配（同类型的大于1个）再通过属性名 byName 的方式注入（所以效率高一些）
     - **@Resource** 默认通过属性名 byName 的方式实现，如果找不到名字，再通过 byType 实现，如果还无法匹配唯一的类型，就报错
 
+    
+
+    **@Component**
+
+    组件，放在类上面。说明这个类被 Spring 管理了，就是 Bean！
+
+    ```java
+    // Component(英：组件) 等价于 ：<bean id="user" class="com.foxthere.pojo.User"/>
+    @Component
+    public class User {
+    
+        @Value("冰糖雪狸")  // 放在setter上也可以，相当于 <property name="name" value="冰糖雪狸"/>
+        private String user_name;
+    
+        public String getUser_name() {
+            return user_name;
+        }
+    
+        @Value("冰糖雪狸2")  // 在 setter 上也可以注入
+        public void setUser_name(String user_name) {
+            this.user_name = user_name;
+        }
+    
+        @Override
+        public String toString() {
+            return "User{" +
+                    "user_name='" + user_name + '\'' +
+                    '}';
+        }
+    }
+    ```
+
+    **@Scope** 
+
+    注入作用域
+
+    ```java
+    // Component(英：组件) 等价于 ：<bean id="user" class="com.foxthere.pojo.User"/>
+    @Component
+    @Scope("singleton")  // 标记为单例模式
+    public class User {
+    
+        @Value("冰糖雪狸")  // 放在setter上也可以，相当于 <property name="name" value="冰糖雪狸"/>
+        private String user_name;
+        }
+    }
+    ```
+
+    
+
+    
+
+
+
+### 使用注解开发
+
+**在 Spring4之后，必须保证aop的包导入！！**
+
+![image-20210404190122765](C:\Users\mi\AppData\Roaming\Typora\typora-user-images\image-20210404190122765.png)
+
+**使用注解需要导入 context 的约束，增加注解的支持！！**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+</beans>
+```
+
+1. Bean
+
+2. 属性注入
+
+   ```java
+   // Component(英：组件) 等价于 ：<bean id="user" class="com.foxthere.pojo.User"/>
+   @Component
+   public class User {
+   
+       @Value("冰糖雪狸")  // 放在setter上也可以，相当于 <property name="name" value="冰糖雪狸"/>
+       private String user_name;
+   
+       public String getUser_name() {
+           return user_name;
+       }
+   
+       @Value("冰糖雪狸2")  // 在 setter 上也可以注入
+       public void setUser_name(String user_name) {
+           this.user_name = user_name;
+       }
+   
+       @Override
+       public String toString() {
+           return "User{" +
+                   "user_name='" + user_name + '\'' +
+                   '}';
+       }
+   }
+   ```
+
+   
+
+3. 衍生的注解
+
+   **@Component** 有几个衍生注解，我们在 Web 开发中，会按照MVC三层架构分层！
+
+   - dao - **@Repository**
+   - pojo - ***@Component***
+   - service - **@Service**
+   - controller - **@Controller**
+
+   **这四个注解的功能都是一样的，都是代表将某个类注册到Spring中，装配Bean**
+
+4. 自动装配
+
+5. 作用域
+
+6. 小结
+
+xml 与 注解：
+
+- xml 更加万能，适用于任何场合！维护简单方便
+- 注解不是自己类使用不了，维护相对复杂！
+
+xml 与 注解的最佳实现：
+
+- xml 同来管理 bean
+
+- 注解只负责完成属性的注入
+
+- **我们在使用的过程中只需要注意一个问题：必须要让注解生效，需要开启注解支持**
+
+  ```xml
+  <!-- 要扫表指定的包，这个包下的注解就会生效 -->
+  <context:component-scan base-package="com.foxthere"/>
+  <context:annotation-config/>
+  ```
+
+
+### 使用Java的方式配置Spring
+
+我们完全不需要Spring配置xml了，全权交给Java来做
+
+JavaConfig 是 Spring 的一个子项目，在Spring4之后，他成为了一个核心功能
