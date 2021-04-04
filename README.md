@@ -7455,3 +7455,91 @@ XML - Extensible Markup Language 可扩展标记语言
     </bean>
 ```
 
+### 通过注解实现自动装配
+
+JDK1.5 支持的注解，Spring2.5就支持了
+
+要使用须知：
+
+ 1. 导入约束：context 约束
+
+ 2. 配置注解的支持： `<context:annotation-config/>` 
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+            https://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            https://www.springframework.org/schema/context/spring-context.xsd">
+    
+        <context:annotation-config/>
+    
+    </beans>
+    ```
+
+    **@Autowired**
+
+    直接在属性上使用即可！也可以在setter上使用！
+
+    在属性前加上 `@Autowired` 关键字甚至可以省略setter方法，但前提是这个自动装配的属性在 IoC（Spring）容器中存在且符合 属性的名称
+
+    
+
+    ```java
+     // 【重点】如果定义了Autowired的required属性为false，说明这个对象可以为null，否则不允许为空
+    @Autowired(required = false)
+    private Cat cat;
+    ```
+
+    
+
+    **@Autowired 配合 @Qualifier(value = " ")**
+
+    如果自动装配的环境比较复杂，那么可以使用 @Qualifier(value = "") 配合 @Autowired 的使用指定唯一的Bean对象注入
+
+    ```java
+    // 【重点】如果自动装配的环境比较复杂（比如在ApplicationContext.xml中有多个Dog对象），那么可以使用 @Qualifier(value = " ") 配合 @Autowired 的使用指定唯一的Bean对象注入
+    @Autowired
+    @Qualifier(value = "dog222")  
+    private Dog dog;
+    
+    ```
+
+    
+
+    
+
+    **@Nullable**
+
+    字段标记了这个注解，说明这个字段可以为null
+
+    ```java
+        // 【重点】 标记了 @Nullable 这个注解，说明这个字段可以为null
+        public Person(@Nullable String name) {
+            this.name = name;
+        }
+    ```
+
+    
+
+    **@Resource**
+
+    ```java
+     // @Resource 是 Java 自带的一种方法，但是没有 @Autowired 和 @Qualifier 高级（效率低了那么一丢丢）
+    @Resource
+    private Cat cat;
+    
+    @Resource(name = "cat111")
+    private Cat cat;
+        
+    ```
+
+    **@Resource 和 @Autowired 的区别和相同点**
+
+    - 都是用来自动装配的，都是可以放在属性字段上
+    - **@Autowired** 通过先通过 byType，如果无法匹配（同类型的大于1个）再通过属性名 byName 的方式注入（所以效率高一些）
+    - **@Resource** 默认通过属性名 byName 的方式实现，如果找不到名字，再通过 byType 实现，如果还无法匹配唯一的类型，就报错
+
