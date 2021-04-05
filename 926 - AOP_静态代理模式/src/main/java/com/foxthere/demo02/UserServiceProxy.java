@@ -10,6 +10,13 @@
  */
 package com.foxthere.demo02;
 
+/**
+ * 为什么使用代理模式？
+ *  因为直接改动源代码是公司中的大忌！！！
+ */
+
+
+
 public class UserServiceProxy implements UserService {
 
     private UserServiceImpl userService;

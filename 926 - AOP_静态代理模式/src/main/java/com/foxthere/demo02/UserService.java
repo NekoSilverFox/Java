@@ -1,11 +1,11 @@
 package com.foxthere.demo02;
 
 public interface UserService {
-    public void add();
+    public void add();  // 增
 
-    public void delete();
+    public void delete();  // 删
 
-    public void update();
+    public void update();  // 改
 
-    public void query();
+    public void query();  // 查
 }
