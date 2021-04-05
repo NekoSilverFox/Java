@@ -14,15 +14,27 @@
     <bean id="afterLog" class="com.foxthere.log.AfterLog"/>
 
     <!--配置AOP，需要导入AOP的约束-->
-    <aop:config>
-        <!--切入点 pointcut          表达式expression (要执行的位置！ * * * * *)-->
+<!--    <aop:config>
+        &lt;!&ndash;切入点 pointcut          表达式expression (要执行的位置！ * * * * *)&ndash;&gt;
         <aop:pointcut id="pointcut" expression="execution(* com.foxthere.service.UserServiceImpl.*(..))"/>
 
-        <!--执行环绕增加！-->
+        &lt;!&ndash;执行环绕增加！&ndash;&gt;
         <aop:advisor advice-ref="lod" pointcut-ref="pointcut"/>
         <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>
 
+    </aop:config>-->
+
+    <!-- 方式二：自定义类 -->
+    <bean id="diyPointcut" class="com.foxthere.diy.DiyPointcut"/>
+    <aop:config>
+        <!-- 自定义切面，ref是要引用的类 -->
+        <aop:aspect ref="diyPointcut">
+            <!-- 切入点 -->
+            <aop:pointcut id="point" expression="execution(* com.foxthere.service.UserServiceImpl.*(..))"/>
+
+            <!-- 通知 -->
+            <aop:before method="before" pointcut-ref="point"/>
+            <aop:after method="after" pointcut-ref="point"/>
+        </aop:aspect>
     </aop:config>
-
-
 </beans>

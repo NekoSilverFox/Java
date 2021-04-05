@@ -7914,3 +7914,39 @@ JavaConfig 是 Spring 的一个子项目，在Spring4之后，他成为了一个
 
 
 方式一：使用Spring的接口
+
+ApplicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--注册Bean-->
+    <bean id="userService" class="com.foxthere.service.UserServiceImpl"/>
+    <bean id="lod" class="com.foxthere.log.log"/>
+    <bean id="afterLog" class="com.foxthere.log.AfterLog"/>
+
+    <!--配置AOP，需要导入AOP的约束-->
+    <aop:config>
+        <!--切入点 pointcut          表达式expression (要执行的位置！ * * * * *)-->
+        <aop:pointcut id="pointcut" expression="execution(* com.foxthere.service.UserServiceImpl.*(..))"/>
+
+        <!--执行环绕增加！-->
+        <aop:advisor advice-ref="lod" pointcut-ref="pointcut"/>
+        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>
+
+    </aop:config>
+
+
+</beans>
+```
+
+方式一：使用自定义类来实现
+
