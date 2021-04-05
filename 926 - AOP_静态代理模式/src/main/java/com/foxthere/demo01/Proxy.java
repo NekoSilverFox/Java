@@ -8,7 +8,7 @@
  * @Versions: v0.1
  * @Github ：https://github.com/NekoSilverFox
  */
-package com.foxthere;
+package com.foxthere.demo01;
 
 public class Proxy implements Rent{
     private Master master;
