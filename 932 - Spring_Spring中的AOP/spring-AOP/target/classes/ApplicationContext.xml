@@ -25,18 +25,24 @@
     </aop:config>-->
 
     <!-- 方式二：自定义类 -->
-    <bean id="diyPointcut" class="com.foxthere.diy.diyPointCut"/>
+<!--    <bean id="diyPointcut" class="com.foxthere.diy.diyPointCut"/>
     <aop:config>
-        <!-- 自定义切面，ref要引用的类 -->
+        &lt;!&ndash; 自定义切面，ref要引用的类 &ndash;&gt;
         <aop:aspect ref="diyPointcut">
-            <!-- 切入点 -->
+            &lt;!&ndash; 切入点 &ndash;&gt;
             <aop:pointcut id="point" expression="execution(* com.foxthere.service.UserServiceImpl.*(..))"/>
-            <!-- 通知 -->
+            &lt;!&ndash; 通知 &ndash;&gt;
             <aop:before method="before" pointcut-ref="point"/>
             <aop:after method="after" pointcut-ref="point"/>
 
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
+
+
+    <!-- 方式三：使用注解 -->
+    <bean id="annotationPointcut" class="com.foxthere.diy.AnnotationPointcut"/>
+    <!-- 开启注解支持 -->
+    <aop:aspectj-autoproxy/>
 
 
 </beans>
