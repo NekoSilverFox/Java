@@ -7913,7 +7913,9 @@ JavaConfig 是 Spring 的一个子项目，在Spring4之后，他成为了一个
 
 
 
-方式一：使用Spring的接口
+方式一：使用Spring的接口【主要是SpringAPI接口实现】
+
+
 
 ApplicationContext.xml
 
@@ -7948,5 +7950,7 @@ ApplicationContext.xml
 </beans>
 ```
 
-方式一：使用自定义类来实现
+方式二：自定义来实现AOP【主要是切面定义】
+
+方式三：注解来实现AOP
 
