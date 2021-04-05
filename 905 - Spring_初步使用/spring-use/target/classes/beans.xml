@@ -13,7 +13,7 @@
         <property name="userDao" ref="myOracleImpl"/>  <!--注入-->
     </bean>
 
-    <!--
+    <!-- 【重点】
         value : 具体的值，具体的数据类型
         ref : 引用Spring容器中创建好的对象
     -->

@@ -7871,8 +7871,46 @@ JavaConfig 是 Spring 的一个子项目，在Spring4之后，他成为了一个
   - 基于接口的动态代理（JDK原生）
   - 基于类的动态代理（cglib）
   - java字节码实现（javassist）
+- 一个动态代理类代理的是一个接口，一般就是对应的一类业务
+- 一个动态代理类可以代理多个类，只要是实现了同一个接口
 
 我们需要了解两个类：Proxy（代理）、InvocationHandle（调用处理程序）
 
 #### InvocationHandle
 
+
+
+## 使用Spring实现Aop
+
+【重点】使用AOP植入，需要导入一个依赖包
+
+```xml
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.6</version>
+        </dependency>
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+```
+
+
+
+方式一：使用Spring的接口
