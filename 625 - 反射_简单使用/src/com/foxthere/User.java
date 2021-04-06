@@ -1,9 +1,11 @@
+package com.foxthere;
+
 /**
  * -*- coding: utf-8 -*-
  *
  * @Time : 2021/4/6 19:12
  * @Author : NekoSilverfox
- * @FileName: User
+ * @FileName: com.foxthere.User
  * @Software: IntelliJ IDEA
  * @Versions: v0.1
  * @Github ：https://github.com/NekoSilverFox
