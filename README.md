@@ -7084,6 +7084,10 @@ public class PrintDemo {
 
 ![image-20210406195807917](README.assets/image-20210406195807917.png)
 
+![image-20210406203058736](README.assets/image-20210406203058736.png)
+
+![image-20210406220642628](README.assets/image-20210406220642628.png)
+
 
 
 # XML
