@@ -4,7 +4,10 @@ import com.foxthere.Person;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * -*- coding: utf-8 -*-
@@ -19,7 +22,7 @@ import java.util.Date;
 
 public class Demo01Jackson {
     public static void main(String[] args) throws Exception {
-        test02();
+        jsonMap();
     }
 
     public static void test01() throws Exception{
@@ -57,6 +60,49 @@ public class Demo01Jackson {
         ObjectMapper objectMapper = new ObjectMapper();
         String str_person = objectMapper.writeValueAsString(person);
         System.out.println(str_person);
+
+    }
+
+    public static void jsonArrayList() throws JsonProcessingException {
+        // 1. 创建Person对象
+        Person person1 = new Person("冰糖雪狸1", 17, "M");
+        Person person2 = new Person("冰糖雪狸2", 17, "M");
+        Person person3 = new Person("冰糖雪狸3", 17, "M");
+        person1.setBirthday(new Date());
+        person2.setBirthday(new Date());
+        person3.setBirthday(new Date());
+
+        ArrayList<Person> people = new ArrayList<>();
+        people.add(person1);
+        people.add(person2);
+        people.add(person3);
+
+        // 2. 创建Jackson的核心对象 ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        String str_person = objectMapper.writeValueAsString(people);
+        System.out.println(str_person);
+
+    }
+
+    public static void jsonMap() throws JsonProcessingException {
+        Person person1 = new Person("冰糖雪狸1", 17, "M");
+        Person person2 = new Person("冰糖雪狸2", 17, "M");
+        Person person3 = new Person("冰糖雪狸3", 17, "M");
+        person1.setBirthday(new Date());
+        person2.setBirthday(new Date());
+        person3.setBirthday(new Date());
+
+        // 1. 创建Map对象
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(1, person1);
+        map.put(2, person2);
+        map.put(3, person3);
+
+
+        // 2. 创建Jackson的核心对象 ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        String str_map = objectMapper.writeValueAsString(map);
+        System.out.println(str_map);
 
     }
 }
