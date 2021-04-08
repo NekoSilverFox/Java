@@ -17,7 +17,7 @@ public class DemoSpringAOP {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 
-        // 动态代理实现的是接口，相当于返回的是被创建的代理类
+        // 【重点】动态代理实现的是接口，相当于返回的是被创建的代理类
         // 所以新生成的代理类只能向上转型为接口类型，不能同等级强转给UserServiceImpl
         UserService userService = (UserService) context.getBean("userService");
 

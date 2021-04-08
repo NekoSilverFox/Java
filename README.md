@@ -8051,3 +8051,48 @@ ApplicationContext.xml
 
 方式三：注解来实现AOP
 
+
+
+# SpringMVC
+
+MVC：模型（dao、service） 、视图、控制器（Servlet）。是一种软件设置规范
+
+![image-20210408000424098](README.assets/image-20210408000424098.png)
+
+## Servlet 配置
+
+```xml
+<!-- 导入依赖 -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+```
+

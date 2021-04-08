@@ -41,7 +41,7 @@
 
     <!-- 方式三：使用注解 -->
     <bean id="annotationPointcut" class="com.foxthere.diy.AnnotationPointcut"/>
-    <!-- 开启注解支持 -->
+    <!-- 开启注解支持   JDK（默认 proxy-target-class="false"）   cglib（proxy-target-class="true"）-->
     <aop:aspectj-autoproxy/>
 
 
