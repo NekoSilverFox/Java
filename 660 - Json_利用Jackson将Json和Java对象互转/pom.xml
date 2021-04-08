@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.foxthere</groupId>
-    <artifactId>950 - Json_Jackson的简单使用</artifactId>
+    <artifactId>660 - Json_Jackson的简单使用</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>jackson-simpleUse</module>
+        <module>jackson-readWrite</module>
     </modules>
 
     <dependencies>

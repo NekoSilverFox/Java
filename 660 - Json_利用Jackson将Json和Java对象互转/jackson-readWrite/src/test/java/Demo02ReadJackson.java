@@ -25,7 +25,7 @@ import java.util.Set;
 public class Demo02ReadJackson {
     public static void main(String[] args) throws IOException, NoSuchFieldException {
         // 这里是从问价流中读取，所以先创建一个文件的读取对象
-        FileReader fileReader = new FileReader("950 - Json_Jackson的简单使用\\info.json");
+        FileReader fileReader = new FileReader("660 - Json_Jackson的简单使用\\info.json");
 
         int len = 0;
         StringBuilder readMap = new StringBuilder(); // 使用 StringBuilder 保存读取的字符串

@@ -33,6 +33,7 @@ public class Demo01WriteJackson {
         // 2. 创建Jackson的核心对象 ObjectMapper
         ObjectMapper objectMapper = new ObjectMapper();
 
+
         /** 转换
          * 转换方法：
          *     writeValue(参数1，obj):
@@ -49,7 +50,7 @@ public class Demo01WriteJackson {
 //        objectMapper.writeValue(new File("950 - Json_Jackson的简单使用\\info.json"), person);
 
         // writeValue.将数据关联到Writer中
-        objectMapper.writeValue(new FileWriter("950 - Json_Jackson的简单使用\\info.json"), person);
+        objectMapper.writeValue(new FileWriter("660 - Json_Jackson的简单使用\\info.json"), person);
     }
 
     public static void test02() throws JsonProcessingException {
@@ -104,6 +105,6 @@ public class Demo01WriteJackson {
         ObjectMapper objectMapper = new ObjectMapper();
         String str_map = objectMapper.writeValueAsString(map);
         System.out.println(str_map);
-        objectMapper.writeValue(new FileWriter("950 - Json_Jackson的简单使用\\info.json"), map);
+        objectMapper.writeValue(new FileWriter("660 - Json_Jackson的简单使用\\info.json"), map);
     }
 }
