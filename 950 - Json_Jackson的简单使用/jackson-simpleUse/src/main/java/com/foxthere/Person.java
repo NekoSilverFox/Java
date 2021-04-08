@@ -10,16 +10,33 @@
  */
 package com.foxthere;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
+
 public class Person {
     private String name;
     private int age;
     private String sex;
+
+//    @JsonIgnore  忽略该属性
+    @JsonFormat(pattern = "yyyy-MM-dd")  // 格式化对象
+    private Date birthday;
 
     public Person(String name, int age, String sex) {
         this.name = name;
         this.age = age;
         this.sex = sex;
     }
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
 
     @Override
     public String toString() {

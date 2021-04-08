@@ -4,6 +4,7 @@ import com.foxthere.Person;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Date;
 
 /**
  * -*- coding: utf-8 -*-
@@ -18,6 +19,10 @@ import java.io.FileWriter;
 
 public class Demo01Jackson {
     public static void main(String[] args) throws Exception {
+        test02();
+    }
+
+    public static void test01() throws Exception{
         // 1. 创建Person对象
         Person person = new Person("冰糖雪狸", 17, "M");
 
@@ -41,5 +46,17 @@ public class Demo01Jackson {
 
         // writeValue.将数据关联到Writer中
         objectMapper.writeValue(new FileWriter("950 - Json_Jackson的简单使用\\info.json"), person);
+    }
+
+    public static void test02() throws JsonProcessingException {
+        // 1. 创建Person对象
+        Person person = new Person("冰糖雪狸", 17, "M");
+        person.setBirthday(new Date());
+
+        // 2. 创建Jackson的核心对象 ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        String str_person = objectMapper.writeValueAsString(person);
+        System.out.println(str_person);
+
     }
 }
