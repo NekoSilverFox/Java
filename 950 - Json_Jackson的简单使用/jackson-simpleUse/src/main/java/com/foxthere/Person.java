@@ -13,6 +13,7 @@ package com.foxthere;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 
 public class Person {
@@ -23,6 +24,9 @@ public class Person {
 //    @JsonIgnore  忽略该属性
     @JsonFormat(pattern = "yyyy-MM-dd")  // 格式化对象
     private Date birthday;
+
+    public Person() {
+    }
 
     public Person(String name, int age, String sex) {
         this.name = name;

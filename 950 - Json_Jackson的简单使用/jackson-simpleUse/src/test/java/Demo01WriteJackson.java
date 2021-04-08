@@ -4,6 +4,7 @@ import com.foxthere.Person;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,13 +15,13 @@ import java.util.Map;
  *
  * @Time : 2021/4/8 20:51
  * @Author : NekoSilverfox
- * @FileName: Demo01Jackson
+ * @FileName: Demo01WriteJackson
  * @Software: IntelliJ IDEA
  * @Versions: v0.1
  * @Github ：https://github.com/NekoSilverFox
  */
 
-public class Demo01Jackson {
+public class Demo01WriteJackson {
     public static void main(String[] args) throws Exception {
         jsonMap();
     }
@@ -84,7 +85,7 @@ public class Demo01Jackson {
 
     }
 
-    public static void jsonMap() throws JsonProcessingException {
+    public static void jsonMap() throws IOException {
         Person person1 = new Person("冰糖雪狸1", 17, "M");
         Person person2 = new Person("冰糖雪狸2", 17, "M");
         Person person3 = new Person("冰糖雪狸3", 17, "M");
@@ -103,6 +104,6 @@ public class Demo01Jackson {
         ObjectMapper objectMapper = new ObjectMapper();
         String str_map = objectMapper.writeValueAsString(map);
         System.out.println(str_map);
-
+        objectMapper.writeValue(new FileWriter("950 - Json_Jackson的简单使用\\info.json"), map);
     }
 }
