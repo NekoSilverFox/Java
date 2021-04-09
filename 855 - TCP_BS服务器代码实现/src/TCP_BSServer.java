@@ -16,7 +16,7 @@ import java.net.Socket;
 
 public class TCP_BSServer {
     public static void main(String[] args) throws IOException {
-        // 创建一个服务器ServerSocket,和系统要指定的端口号
+        // 创建一个服务器 ServerSocket, 和系统要指定的端口号
         ServerSocket serverSocket = new ServerSocket(8080);
 
         // 使用accept方法获取到请求的客户端对象(浏览器)
@@ -26,7 +26,7 @@ public class TCP_BSServer {
         InputStream acceptInputStream = accept.getInputStream();
 
         // 使用网络字节输入流InputStream对象中的方法read读取客户端的请求信息
-        // 浏览器访问：http://127.0.0.1:8080/855%20-%20TCP_BS%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/web/index.html
+        // 浏览器访问：http://127.0.0.1:8080/fileForTest/web/index.html
 /*        byte[] bytes = new byte[1024];
         int len = 0;
         while ((len = acceptInputStream.read(bytes)) != -1) {
@@ -45,7 +45,7 @@ public class TCP_BSServer {
         // 创建一个本地字节输入流,构造方法中绑定要读取的html路径
         FileInputStream fileInputStream = new FileInputStream(htmlPath);
 
-        // 使用Socket中的方法getOutputStream获取网络字节输出流OutputStream对象
+        // 使用Socket中的方法getOutputStream获取网络字节输出流 OutputStream 对象
         OutputStream outputStream = accept.getOutputStream();
 
         // 写入HTTP协议响应头,固定写法
