@@ -21,8 +21,15 @@ public class Person {
     private String sex;
 
 //    @JsonIgnore  忽略该属性
-    @JsonFormat(pattern = "yyyy-MM-dd")  // 格式化对象
+//    @JsonFormat(pattern = "yyyy-MM-dd")  // 格式化对象
     private Date birthday;
+
+    public Person(String name, int age, String sex, Date birthday) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.birthday = birthday;
+    }
 
     public Person(String name, int age, String sex) {
         this.name = name;

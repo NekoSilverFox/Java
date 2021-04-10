@@ -105,6 +105,6 @@ public class Demo01WriteJackson {
         ObjectMapper objectMapper = new ObjectMapper();
         String str_map = objectMapper.writeValueAsString(map);
         System.out.println(str_map);
-        objectMapper.writeValue(new FileWriter("660 - Json_Jackson的简单使用\\info.json"), map);
+        objectMapper.writeValue(new FileWriter("660 - Json_利用Jackson将Json和Java对象互转\\info.json"), map);
     }
 }

@@ -25,7 +25,7 @@ import java.util.Set;
 public class Demo02ReadJackson {
     public static void main(String[] args) throws IOException, NoSuchFieldException {
         // 这里是从问价流中读取，所以先创建一个文件的读取对象
-        FileReader fileReader = new FileReader("660 - Json_Jackson的简单使用\\info.json");
+        FileReader fileReader = new FileReader("660 - Json_利用Jackson将Json和Java对象互转\\info.json");
 
         int len = 0;
         StringBuilder readMap = new StringBuilder(); // 使用 StringBuilder 保存读取的字符串
@@ -41,18 +41,30 @@ public class Demo02ReadJackson {
         // 3.转换为Java对象为存Person对象的Map（Map比较麻烦，其他类型直接传.class就好，Person.class）
         // 【重点】如果是自定义类型，必须使用 Object 接受然后再进行强转！！！！！
         HashMap<Integer, Object> personHashMap = mapper.readValue(readMap.toString(), new TypeReference<HashMap<Integer, Object>>() {});
-//        HashMap<Integer, Object> personHashMap = mapper.convertValue(readMap.toString(), new TypeReference<HashMap<Integer, Object>>() {});  ERROR
+//        HashMap<Integer, Person> resPersonHashMap = mapper.convertValue(personHashMap, new TypeReference<HashMap<Integer, Person>>() {});  //ERROR
+
+        System.out.println("==============================");
 
         // 遍历 HaspMap
         Set<Integer> set = personHashMap.keySet();
         for (Integer key : set) {
+            System.out.println("1111111111111111111111111111111111");
+
             Object value =  personHashMap.get(key);
+
+            System.out.println("2222222222222222222222222222222222");
 
             // 【重点】 一个鬼操作，转过去再转回来就好了。可想而知，效率应该很低 :(
             String tmp = mapper.writeValueAsString(value);
             Person person = mapper.readValue(tmp, Person.class);
 
+
+
+//            System.out.println(tmp);
+//            System.out.println(key);
 //            System.out.println(value.getClass());
+
+
             System.out.println(key + "=" + person);
         }
 
