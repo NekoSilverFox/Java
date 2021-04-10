@@ -23,7 +23,7 @@ import java.util.function.Predicate;
     }
     方法内部的两个判断条件,也是使用||运算符连接起来的
  */
-public class Demo02Predicate_or {
+public class Demo03Predicate_or {
     /*
             定义一个方法,方法的参数,传递一个字符串
             传递两个Predicate接口
@@ -32,7 +32,7 @@ public class Demo02Predicate_or {
                 满足一个条件即可
          */
     public static boolean checkString(String str, Predicate<String> pre1, Predicate<String> pre2) {
-        return pre1.or(pre2).test(str);  // 等价于return pre1.test(s) && pre2.test(s);
+        return pre1.or(pre2).test(str);  // 等价于return pre1.test(s) || pre2.test(s);
     }
 
     public static void main(String[] args) {
