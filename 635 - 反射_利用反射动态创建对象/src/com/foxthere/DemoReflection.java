@@ -38,7 +38,7 @@ public class DemoReflection {
 
         // 通过反射操作属性
         Field name = userClass.getDeclaredField("name");
-        name.setAccessible(true);  // 不知直接操作【private】属性，如果需要则关闭权限安全监测。不然强行赋值会报错
+        name.setAccessible(true);  // 【暴力反射】不知直接操作【private】属性，如果需要则关闭权限安全监测。不然强行赋值会报错
         name.set(user, "非常神奇的冰糖雪狸");
         System.out.println(user);  // User{name='非常神奇的冰糖雪狸', age=0}
 
