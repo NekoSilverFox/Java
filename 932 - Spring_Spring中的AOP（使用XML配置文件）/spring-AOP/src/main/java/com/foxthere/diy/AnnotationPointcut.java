@@ -23,10 +23,11 @@ public class AnnotationPointcut {
     /**
      * 这么做的好处是非侵入式的
      * 第一个 `*` 代表返回值可以是任意类型
-     * 第一个 `*` 代表任类
+     * 第二个 `*` 代表任类
+     * 第三个 `*` 代表任方法
      * `..` 参数类型和个数都是任意的
      */
-    @Before("execution(* com.foxthere.service.UserServiceImpl.*(..))")  // 注解的内容是切入点
+    @Before("execution(* com.foxthere.service.*.*(..))")  // 注解的内容是切入点
     public void before() {
         System.out.println("================== 【注解】方法执行前 ==================");
     }
