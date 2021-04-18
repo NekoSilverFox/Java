@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
+    <!-- 注意：这里用的是 beanS ，相当于把一个个的小bean 包装在了一个大的 beanS 环境中（beans的环境名字为 profile="dev"）-->
     <beans profile="dev">
         <bean id="dataSource" class="com.foxthere.Profile.DataSource">
             <property name="url" value="testcom.com:1231/vrl"/>
