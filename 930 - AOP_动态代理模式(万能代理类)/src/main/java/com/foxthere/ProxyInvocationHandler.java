@@ -32,7 +32,13 @@ public class ProxyInvocationHandler implements InvocationHandler {
         );
     }
 
-    // 处理代理实例，并返回结果
+    /** 处理代理实例，并返回结果
+     * @param proxy 代理对象
+     * @param method 代理的方法
+     * @param args 方法的参数
+     * @return 方法的返回值
+     * @throws Throwable
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         log(method.getName());  // 利用反射技术
