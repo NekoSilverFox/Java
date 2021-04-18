@@ -19,10 +19,19 @@ import org.springframework.stereotype.Component;
 @Aspect  // 定义这是一个切面
 public class LogAspect {
     /**
+     * 通过方法定义切点
+     * 这样做的好处是可以把下面各种通知的注解中的value值进行替换
+     */
+    @Pointcut("@annotation(Action)")
+    public void pointcut() {
+
+    }
+
+    /**
      * 前置通知，在目标方法执行前执行
      * @param joinPoint
      */
-    @Before(value = "@annotation(Action)")
+    @Before(value = "pointcut()" /*"@annotation(Action)"*/)
     public void before(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + "方法开始执行了。。。");
@@ -32,7 +41,7 @@ public class LogAspect {
      * 后置通知，在目标方法执行后执行
      * @param joinPoint
      */
-    @After(value = "@annotation(Action)")
+    @After(value = "pointcut()" /*"@annotation(Action)"*/)
     public void after(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + "方法开始结束了。。。");
@@ -45,7 +54,7 @@ public class LogAspect {
      * @param joinPoint
      * @param r 函数的返回值
      */
-    @AfterReturning(value = "@annotation(Action)", returning = "r")
+    @AfterReturning(value = "pointcut()" /*"@annotation(Action)"*/, returning = "r")
     public void returning(JoinPoint joinPoint, Integer r) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + " 返回通知：" + r);
@@ -56,7 +65,7 @@ public class LogAspect {
      * @param joinPoint
      * @param e 异常参数，和方法分参数名一一对应，注意异常的类型
      */
-    @AfterThrowing(value = "@annotation(Action)", throwing = "e")
+    @AfterThrowing(value = "pointcut()" /*"@annotation(Action)"*/, throwing = "e")
     public void afterThrowing(JoinPoint joinPoint, Exception e) {
         String name = joinPoint.getSignature().getName();
         System.out.println(name + " 触发了异常。。" + e.getMessage());
