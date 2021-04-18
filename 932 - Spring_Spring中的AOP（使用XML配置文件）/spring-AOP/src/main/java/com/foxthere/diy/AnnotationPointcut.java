@@ -20,6 +20,12 @@ import org.aspectj.lang.annotation.Before;
 // 方式三：注解来实现AOP
 @Aspect  // 标注这个类是一个切面
 public class AnnotationPointcut {
+    /**
+     * 这么做的好处是非侵入式的
+     * 第一个 `*` 代表返回值可以是任意类型
+     * 第一个 `*` 代表任类
+     * `..` 参数类型和个数都是任意的
+     */
     @Before("execution(* com.foxthere.service.UserServiceImpl.*(..))")  // 注解的内容是切入点
     public void before() {
         System.out.println("================== 【注解】方法执行前 ==================");
