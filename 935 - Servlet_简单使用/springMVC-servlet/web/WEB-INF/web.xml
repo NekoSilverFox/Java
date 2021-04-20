@@ -10,7 +10,7 @@
 
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
-        <url-pattern>hello</url-pattern>
+        <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
     <session-config>
