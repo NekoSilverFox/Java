@@ -8837,3 +8837,19 @@ MVC：模型（dao、service） 、视图、控制器（Servlet）。是一种�
     </dependencies>
 ```
 
+## SpringMVC 执行原理
+
+![image-20210422101957152](README.assets/image-20210422101957152.png)
+
+1. DispatcherServlet 为核心，所有的用户请求的数据都会经过它的拦截和处理
+2. HandlerMapping 为处理器映射器。DispatherServlet 调用 HandlerMapping，HandlerMapping 根据请求的 url 查找 Handler
+3. HandlerExecution 表示具体的Handler，其主要作用是根据 url 查找**控制器**，如 url 被查找控制器为：hello
+4. HandlerExecution 将解析后的信息传递给 DispatherServlet，如控制器映射器等
+5. HandlerAdapter 表示处理器适配器，它按照特定的规则去执行 Handler
+6. Handler 让具体的 Controller 执行
+7. Controller 让具体的执行信息返回给 HandlerAdapter，如 ModelAndView
+8. HandlerAdapter 将视图逻辑名或模型传递给 DispatcherServlet
+9. DispatcherServlet 调用视图解析器（ViewResolver）来解析 HandlerAdapter 传递的**逻辑视图名**
+10. 视图解析器将解析的逻辑视图名传给 DispatcherServlet
+11. DispatcherServlet 根据视图解析器解析的视图结果，调用具体的视图
+12. 最终呈现给用户

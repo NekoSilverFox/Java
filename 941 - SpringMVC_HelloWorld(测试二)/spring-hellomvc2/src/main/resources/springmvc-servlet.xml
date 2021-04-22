@@ -10,10 +10,16 @@
     <!-- 添加 处理器适配器 -->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
 
-    <!-- 视图解析器 -->
+    <!-- 视图解析器 DispatcherServlet 给他的 ModeAndView
+        1. 获取了 ModeAndView 的数据
+        2. 解析 ModeAndView 中的视图名字
+        3. 拼接视图名字，找到对应的视图 /WEB-INF/jsp/hello.jsp
+        4. 将数据渲染到视图上
+     -->
     <bean id="InternalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 前缀 -->
         <property name="prefix" value="/WEB-INF/jsp/"/>
+
         <!-- 后缀 -->
         <property name="suffix" value=".jsp"/>
     </bean>
