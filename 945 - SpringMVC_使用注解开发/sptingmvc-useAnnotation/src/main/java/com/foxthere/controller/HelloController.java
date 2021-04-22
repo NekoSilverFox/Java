@@ -25,7 +25,7 @@ public class HelloController {
      *      然后 /WEB-INF/jsp/hello.jsp 中的资源就会被访问到
      *
      * @param model
-     * @return
+     * @return 接受用户的请求并将其转换为一个模型
      */
     @RequestMapping("/h1")  // 浏览器访问--> localhost:8080/h1
     public String hello(Model model) {
