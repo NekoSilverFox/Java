@@ -8865,3 +8865,11 @@ MVC：模型（dao、service） 、视图、控制器（Servlet）。是一种�
 ModeMap：继承了 LinkedHashMap，所以它拥有 LinkedHashMap 的所有功能
 
 Model：可以看作是一个精简版，因为大部分时间都会直接使用 Model
+
+## 配置Spring解决乱码问题
+
+写在 web.xml 中
+
+**本质上是使用了  Spring 提供的一个过滤器（filter）** 
+
+![image-20210425010310335](README.assets/image-20210425010310335.png)
