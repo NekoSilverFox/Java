@@ -8873,3 +8873,12 @@ Model：可以看作是一个精简版，因为大部分时间都会直接使用
 **本质上是使用了  Spring 提供的一个过滤器（filter）** 
 
 ![image-20210425010310335](README.assets/image-20210425010310335.png)
+
+# RestTemplate
+
+## Http 的 GET 请求
+
+RestTemplate 有两个核心方法来执行 GET 请求
+
+1. RestTmplate.getForObject 方法可以获取对象
+2. RestTmplate.getForEntity 方法不仅可以获取对象，还可以获取 Http 状态码，请求头等详细信息

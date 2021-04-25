@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.foxthere</groupId>
-    <artifactId>961 - SpingMVC_Jackson</artifactId>
+    <artifactId>964 - SpringMVC_SSM整合</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>springmvc-jackson</module>
+        <module>springmvc-ssm</module>
     </modules>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
