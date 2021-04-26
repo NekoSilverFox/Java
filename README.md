@@ -8882,3 +8882,19 @@ RestTemplate 有两个核心方法来执行 GET 请求
 
 1. RestTmplate.getForObject 方法可以获取对象
 2. RestTmplate.getForEntity 方法不仅可以获取对象，还可以获取 Http 状态码，请求头等详细信息
+
+## Http 的 POST 请求
+
+RestTemplate 有两个核心方法来执行 POST请求
+
+1. postForObject
+2. postForEntity
+
+**RestTemplate 的传参**
+
+RestTemplate 的 POST 方法与 GET 方法的区别是 POST 方法传参的 Map ==**必须是 `MultiValueMap`**== 
+
+POST 方法 的 MultiValueMap 既支持基本类型分开传参，也支持实体传参。类似于下面的形式：
+
+![image-20210426000515244](README.assets/image-20210426000515244.png)
+
