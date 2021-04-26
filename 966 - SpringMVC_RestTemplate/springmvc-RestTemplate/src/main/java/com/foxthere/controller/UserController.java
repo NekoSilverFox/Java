@@ -9,7 +9,6 @@
  * @Github ：https://github.com/NekoSilverFox
  */
 package com.foxthere.controller;
-
 import com.foxthere.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +20,7 @@ public class UserController {
 
     @GetMapping(value = "/getUser/{name}/{age}")
     @ResponseBody  // 配合`@Controller`使用，增加这个注解说明不会经过视图解析器，会直接返回一个字符串
-    public static Object getUser(/*Model model, */@PathVariable/*("userName")*/ String name, @PathVariable/*("userAge")*/ int age) {
+    public Object getUser(/*Model model, */@PathVariable/*("userName")*/ String name, @PathVariable/*("userAge")*/ int age) {
         System.out.println("接收到的 name：" + name + " age: " + age);
 
         User user = new User(name, age);
@@ -34,11 +33,13 @@ public class UserController {
     }
 
 
-    @PostMapping("/postUser")
+//    @PostMapping("/postUser")
+    @RequestMapping("/postUser")
     @ResponseBody  // 配合`@Controller`使用，增加这个注解说明不会经过视图解析器，会直接返回一个字符串
-    public static Object postUser(User user) {
+    public Object postUser(User user) {
         return user;
     }
+
 
     @RequestMapping("/addUser3")
     @ResponseBody  // 配合`@Controller`使用，增加这个注解说明不会经过视图解析器，会直接返回一个字符串

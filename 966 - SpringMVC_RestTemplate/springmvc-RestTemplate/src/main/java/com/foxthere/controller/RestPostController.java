@@ -12,9 +12,7 @@ package com.foxthere.controller;
 
 import com.foxthere.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -37,6 +35,7 @@ public class RestPostController {
     @ResponseBody  // 配合`@Controller`使用，增加这个注解说明不会经过视图解析器，会直接返回一个对象
     public Object postForObject() {
         String url = "http://localhost:8080/user/postUser";
+//        String url = "http://localhost:8080/user/addUser3";
 
         // Post 方法必须使用 MultiValueMap 传参；Object换成User也可以
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
@@ -91,5 +90,43 @@ public class RestPostController {
 
         User result = restTemplate.postForObject(url, entityParam, User.class);
         return result;
+    }
+
+    @GetMapping("postForEntity")
+    @ResponseBody
+    public User postForEntity() {
+
+        String url = "http://localhost:8080/user/postUser";
+
+        MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
+        paramMap.add("name", "Silverfox !!!!!!!");
+        paramMap.add("age", 14);
+
+        ResponseEntity<User> userResponseEntity = restTemplate.postForEntity(url, paramMap, User.class);
+
+        HttpStatus statusCode = userResponseEntity.getStatusCode();
+        int statusCodeValue = userResponseEntity.getStatusCodeValue();
+        HttpHeaders headers = userResponseEntity.getHeaders();
+
+        return userResponseEntity.getBody();
+    }
+
+    @GetMapping("exchange")
+    @ResponseBody
+    public User exchange() {
+
+        String url = "http://localhost:8080/user/postUser";
+
+        MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
+        paramMap.add("name", "Silverfox  exchange");
+        paramMap.add("age", 14);
+
+        // HttpEntity 包装了传参
+        HttpEntity<MultiValueMap> requestEntity = new HttpEntity<>(paramMap);
+
+        // ResponseEntity
+        ResponseEntity<User> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, User.class);
+
+        return responseEntity.getBody();
     }
 }
