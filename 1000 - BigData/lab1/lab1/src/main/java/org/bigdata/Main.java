@@ -57,8 +57,8 @@ public class Main {
 
             for (Element e : list) {
                 for (int i = 0; i < XML_ELEMENT.length; i++) {
-                    String value = e.getChildText(XML_ELEMENT[i]);
-                    String obfuscatedValue = obfuscate(value);
+                    String eStr = e.getChildText(XML_ELEMENT[i]);
+                    String obfuscatedValue = obfuscate(eStr);
                     e.getChild(XML_ELEMENT[i]).setText(obfuscatedValue);
                 }
             }
@@ -93,8 +93,8 @@ public class Main {
             /* Encoding for every element */
             for (Element e : list) {
                 for (int i = 0; i < XML_ELEMENT.length; i++) {
-                    String value = e.getChildText(XML_ELEMENT[i]);
-                    String deobfuscatedValue = deobfuscate(value);
+                    String eStr = e.getChildText(XML_ELEMENT[i]);
+                    String deobfuscatedValue = deobfuscate(eStr);
                     e.getChild(XML_ELEMENT[i]).setText(deobfuscatedValue);
                 }
             }

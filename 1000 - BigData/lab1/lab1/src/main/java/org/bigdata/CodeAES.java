@@ -21,32 +21,30 @@ public class CodeAES {
     /**
      * обфускирования данных с помощью AES
      *
-     * @param value
+     * @param str
      * @return
      * @throws Exception
      */
-    static String obfuscate(String value) throws Exception {
+    static String obfuscate(String str) throws Exception {
         Key aesKey = new SecretKeySpec(AES_KAY.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, aesKey);
 
-        byte[] encrypted = cipher.doFinal(value.getBytes());
-        String result = Base64.getEncoder().withoutPadding().encodeToString(encrypted);  // 翻译为 base64
-
-        return result;
+        return Base64.getEncoder().withoutPadding().encodeToString(cipher.doFinal(str.getBytes()));
     }
 
     /**
      * де-обфускирования данных
      *
-     * @param value
+     * @param str
      * @return
      * @throws Exception
      */
-    static String deobfuscate(String value) throws Exception {
+    static String deobfuscate(String str) throws Exception {
         Key aesKey = new SecretKeySpec(AES_KAY.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, aesKey);
-        return new String(cipher.doFinal(Base64.getDecoder().decode(value)));
+
+        return new String(cipher.doFinal(Base64.getDecoder().decode(str)));
     }
 }
