@@ -871,7 +871,7 @@ public class MyOuter {
 
 `java.lang.Object`类是Java语言中的根类，即所有类的父类。它中描述的所有方法子类都可以使用。在对象实例化的时候，最终找的父类就是Object。
 
-如果一个类没有特别指定父类，	那么默认则继承自Object类。例如：
+如果一个类没有特别指定父类，那么默认则继承自Object类。例如：
 
 ```java
 public class MyClass /*extends Object*/ {
@@ -4159,17 +4159,17 @@ public class MyThread extends Thread {
 
 ## 教学目标
 
--[ ] 能够理解线程通信概念
--[ ] 能够理解等待唤醒机制
--[ ] 能够描述Java中线程池运行原理
--[ ] 能够理解函数式编程相对于面向对象的优点
--[ ] 能够掌握Lambda表达式的标准格式
--[ ] 能够使用Lambda标准格式使用Runnable与Comparator接口
--[ ] 能够掌握Lambda表达式的省略格式与规则
--[ ] 能够使用Lambda省略格式使用Runnable与Comparator接口
--[ ] 能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法）
--[ ] 能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法）
--[ ] 能够明确Lambda的两项使用前提
+- [ ] 能够理解线程通信概念
+    -[ ] 能够理解等待唤醒机制
+    -[ ] 能够描述Java中线程池运行原理
+    -[ ] 能够理解函数式编程相对于面向对象的优点
+    -[ ] 能够掌握Lambda表达式的标准格式
+    -[ ] 能够使用Lambda标准格式使用Runnable与Comparator接口
+    -[ ] 能够掌握Lambda表达式的省略格式与规则
+    -[ ] 能够使用Lambda省略格式使用Runnable与Comparator接口
+    -[ ] 能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法）
+    -[ ] 能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法）
+    -[ ] 能够明确Lambda的两项使用前提
 
 # 第一章 等待唤醒机制
 
