@@ -23,10 +23,8 @@ import java.util.List;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.bigdata.CodeAES.deobfuscate;
-import static org.bigdata.CodeAES.obfuscate;
 import static org.bigdata.Config.OBFUSCATED_FILEPATH;
-import static org.bigdata.Config.DEOBFUSCATED_FILEPATH;
+import static org.bigdata.Config.UNOBFUSCATED_FILEPATH;
 import static org.bigdata.Config.SOURCE_FILEPATH;
 import static org.bigdata.Config.XML_ELEMENT;
 
@@ -58,7 +56,7 @@ public class Main {
             for (Element e : list) {
                 for (int i = 0; i < XML_ELEMENT.length; i++) {
                     String eStr = e.getChildText(XML_ELEMENT[i]);
-                    String obfuscatedValue = obfuscate(eStr);
+                    String obfuscatedValue = Encrypt.obfuscate(eStr);
                     e.getChild(XML_ELEMENT[i]).setText(obfuscatedValue);
                 }
             }
@@ -94,13 +92,13 @@ public class Main {
             for (Element e : list) {
                 for (int i = 0; i < XML_ELEMENT.length; i++) {
                     String eStr = e.getChildText(XML_ELEMENT[i]);
-                    String deobfuscatedValue = deobfuscate(eStr);
+                    String deobfuscatedValue = Encrypt.unobfuscate(eStr);
                     e.getChild(XML_ELEMENT[i]).setText(deobfuscatedValue);
                 }
             }
 
             /* Save XML */
-            FileWriter fw = new FileWriter(DEOBFUSCATED_FILEPATH);
+            FileWriter fw = new FileWriter(UNOBFUSCATED_FILEPATH);
             XMLOutputter xmlOutputter = new XMLOutputter();
             xmlOutputter.setFormat(Format.getPrettyFormat().setEncoding("ISO-8859-1"));
             xmlOutputter.output(doc, fw);
