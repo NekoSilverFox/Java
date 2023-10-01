@@ -35,6 +35,27 @@ public class Main {
         keystore.load(new FileInputStream(Config.PATH_PRIV_KEY), Config.PWD_P12);
         PrivateKey privateKey = (PrivateKey) keystore.getKey("baeldung", Config.PWD_KEY);
 
-        /*  */
+        /* Шифрование */
+        String secretMessage = "Hello from lab2 test msg";
+        System.out.println("Original Message : " + secretMessage);
+
+        byte[] stringToEncrypt = secretMessage.getBytes();
+        byte[] encryptedData = AsymmetricEncryption.encryptData(stringToEncrypt, certificate);
+        System.out.println("\nEncrypted Message : ");
+        System.out.println(new String(encryptedData));
+
+        /* дешифрование */
+        byte[] rawData = AsymmetricEncryption.decryptData(encryptedData, privateKey);
+        String decryptedMessage = new String(rawData);
+        System.out.println("\nDecrypted Message : " + decryptedMessage);
+
+        //Верификация
+        System.out.print("\n====================================\nVerification check : ");
+        byte[] signedData = AsymmetricEncryption.signData(rawData, certificate, privateKey);
+        Boolean check = AsymmetricEncryption.verifSignData(signedData);
+        if (check)
+            System.out.println("Passed");
+        else
+            System.out.println("Failed");
     }
 }
