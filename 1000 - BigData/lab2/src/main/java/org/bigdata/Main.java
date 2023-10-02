@@ -54,7 +54,7 @@ public class Main {
         byte[] signedData = AsymmetricEncryption.signData(rawData, certificate, privateKey);
         Boolean check = AsymmetricEncryption.verifSignData(signedData);
         if (check)
-            System.out.println("Passed");
+            System.out.println("Successful");
         else
             System.out.println("Failed");
     }
