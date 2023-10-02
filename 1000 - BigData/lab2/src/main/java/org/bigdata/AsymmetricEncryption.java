@@ -64,7 +64,8 @@ public class AsymmetricEncryption {
      * @throws CMSException
      * @throws IOException
      */
-    public static byte[] encryptData(final byte[] data, X509Certificate encryptionCertificate) throws CertificateEncodingException, CMSException, IOException {
+    public static byte[] encryptData(final byte[] data, X509Certificate encryptionCertificate)
+            throws CertificateEncodingException, CMSException, IOException {
         byte[] encryptedData = null;
         if (null != data && null != encryptionCertificate) {
             CMSEnvelopedDataGenerator cmsEnvelopedDataGenerator = new CMSEnvelopedDataGenerator();
@@ -85,7 +86,7 @@ public class AsymmetricEncryption {
     }
 
     /**
-     * реализация метода decryptData():
+     * дешифрованный плотный текст
      * @param encryptedData
      * @param decryptionKey
      * @return
@@ -99,6 +100,8 @@ public class AsymmetricEncryption {
             /* извлекли всех предполагаемых получателей сообщения с помощью метода getRecipients() */
             Collection<RecipientInformation> recip = envelopedData.getRecipientInfos().getRecipients();
             KeyTransRecipientInformation recipientInfo = (KeyTransRecipientInformation) recip.iterator().next();
+
+            /* связанный с **закрытым** ключом получателя */
             JceKeyTransRecipient recipient = new JceKeyTransEnvelopedRecipient(decryptionKey);
 
             decryptedData = recipientInfo.getContent(recipient);
@@ -106,29 +109,56 @@ public class AsymmetricEncryption {
         return decryptedData;
     }
 
+    /**
+     * подписать секретное сообщение с помощью цифрового сертификата
+     * @param data
+     * @param signingCertificate
+     * @param signingKey
+     * @return объекта подписанных данных CMS, который содержит подпись CMS.
+     * @throws CertificateEncodingException
+     * @throws OperatorCreationException
+     * @throws CMSException
+     * @throws IOException
+     */
     public static byte[] signData(byte[] data, final X509Certificate signingCertificate, final PrivateKey signingKey)
             throws CertificateEncodingException, OperatorCreationException, CMSException, IOException {
+        /* встроили входные данные в CMSTypedData */
         byte[] signedMessage = null;
         List<X509Certificate> certList = new ArrayList<X509Certificate>();
         CMSTypedData cmsData = new CMSProcessableByteArray(data);
         certList.add(signingCertificate);
         Store certs = new JcaCertStore(certList);
+
+        /* использовали SHA256withRSA в качестве алгоритма подписи и наш ключ для создания нового объекта ContentSigner */
         CMSSignedDataGenerator cmsGenerator = new CMSSignedDataGenerator();
         ContentSigner contentSigner = new JcaContentSignerBuilder("SHA256withRSA").build(signingKey);
         cmsGenerator.addSignerInfoGenerator(new JcaSignerInfoGeneratorBuilder(new JcaDigestCalculatorProviderBuilder().setProvider("BC").build()).build(contentSigner, signingCertificate));
         cmsGenerator.addCertificates(certs);
         CMSSignedData cms = cmsGenerator.generate(cmsData, true);
+
+        /* generate() для создания объекта подписанных данных CMS, который также содержит подпись CMS */
         signedMessage = cms.getEncoded();
         return signedMessage;
     }
 
+    /**
+     * верифицировать
+     * @param signedData
+     * @return
+     * @throws CMSException
+     * @throws IOException
+     * @throws OperatorCreationException
+     * @throws CertificateException
+     */
     public static boolean verifSignData(final byte[] signedData)
             throws CMSException, IOException, OperatorCreationException, CertificateException {
-        ByteArrayInputStream bIn = new ByteArrayInputStream(signedData);
-        ASN1InputStream aIn = new ASN1InputStream(bIn);
-        CMSSignedData s = new CMSSignedData(ContentInfo.getInstance(aIn.readObject()));
-        aIn.close();
-        bIn.close();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(signedData);
+        ASN1InputStream asnInputStream = new ASN1InputStream(inputStream);
+
+        /* создали объект CMSSignedData на основе нашего байтового массива подписанных данных */
+        CMSSignedData s = new CMSSignedData(ContentInfo.getInstance(asnInputStream.readObject()));
+        asnInputStream.close();
+        inputStream.close();
 
         Store certs = s.getCertificates();
         SignerInformationStore signers = s.getSignerInfos();

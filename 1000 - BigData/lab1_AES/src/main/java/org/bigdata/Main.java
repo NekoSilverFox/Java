@@ -65,12 +65,9 @@ public class Main {
 
             /* Save XML */
             FileWriter fileWriter = new FileWriter(OBFUSCATED_FILEPATH);
-
             XMLOutputter xmlOutputter = new XMLOutputter();
             xmlOutputter.setFormat(Format.getPrettyFormat().setEncoding("ISO-8859-1"));
             xmlOutputter.output(doc, fileWriter);
-
-
 
             /* де-обфускация */
         } else if ('d' == mode) {
