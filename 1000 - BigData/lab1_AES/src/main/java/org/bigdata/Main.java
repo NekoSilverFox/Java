@@ -1,5 +1,6 @@
 /**
  * -*- coding: utf-8 -*-
+ * симметричное шифрование
  *
  * @Time : 2023/9/20 15:13
  * @Author : NekoSilverfox

@@ -110,7 +110,7 @@ public class AsymmetricEncryption {
     }
 
     /**
-     * подписать секретное сообщение с помощью цифрового сертификата
+     * **подписать** секретное сообщение с помощью цифрового сертификата
      * @param data
      * @param signingCertificate
      * @param signingKey
@@ -160,18 +160,18 @@ public class AsymmetricEncryption {
         asnInputStream.close();
         inputStream.close();
 
-        Store certs = s.getCertificates();
+        /* извлекли всех **подписчиков**, используя метод getSignerInfos() */
         SignerInformationStore signers = s.getSignerInfos();
         Collection<SignerInformation> c = signers.getSigners();
         SignerInformation signer = c.iterator().next();
+
+        /* проверить каждого **подписчиков** */
+        Store certs = s.getCertificates();
         Collection<X509CertificateHolder> certCollection = certs.getMatches(signer.getSID());
         Iterator<X509CertificateHolder> certIt = certCollection.iterator();
         X509CertificateHolder certHolder = certIt.next();
-        boolean verifResult = signer.verify(new JcaSimpleSignerInfoVerifierBuilder().build(certHolder));
-        if (!verifResult) {
-            return false;
-        }
-        return true;
+
+        return signer.verify(new JcaSimpleSignerInfoVerifierBuilder().build(certHolder));
     }
 
 
