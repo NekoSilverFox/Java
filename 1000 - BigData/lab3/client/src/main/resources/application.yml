@@ -8,12 +8,12 @@ server:
     enabled: true
     client-auth: need
     key-store: classpath:gateway.jks
-    key-store-password: password
+    key-store-password: 123456
     key-alias: gateway
     key-store-type: JKS
     key-store-provider: SUN
     trust-store: classpath:gateway.jks
-    trust-store-password: password
+    trust-store-password: 123456
     trust-store-type: JKS
 
 endpoint:
