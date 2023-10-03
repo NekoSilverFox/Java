@@ -1,7 +1,5 @@
 package com.bigdata.client;
 
-//import org.apache.hc.client5.http.classic.HttpClient;
-
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -34,7 +32,7 @@ public class ClientApplication {
 		RestTemplate restTemplate = new RestTemplate();
 
 		KeyStore keyStore;
-		HttpComponentsClientHttpRequestFactory requestFactory = null;
+		HttpComponentsClientHttpRequestFactory requestFactory;
 
 		try {
 			keyStore = KeyStore.getInstance("jks");
@@ -59,8 +57,8 @@ public class ClientApplication {
 					.setMaxConnTotal(5)
 					.setMaxConnPerRoute(5)
 					.setDefaultConnectionConfig(ConnectionConfig.custom()
-												.setSocketTimeout(Timeout.ofMinutes(1))
-												.setConnectTimeout(Timeout.ofMinutes(1)).build())
+							.setSocketTimeout(Timeout.ofMinutes(1))
+							.setConnectTimeout(Timeout.ofMinutes(1)).build())
 					.build();
 
 			HttpClient httpClient = HttpClients.custom().setConnectionManager(connectionManager).build();

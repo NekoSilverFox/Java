@@ -14,6 +14,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,12 @@ public class ClientController {
     @Value("${endpoint.server}")
     private String msEndpoint;
 
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String getGateway() {
+        System.out.println("Only get gateway");
+        return "Get from gateway";
+    }
+
     @RequestMapping(value = "/data", method = RequestMethod.GET)
     public String getData() {
         System.out.println("Returning data from gateway");
@@ -35,7 +42,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/server-data", method = RequestMethod.GET)
-    public String getMsData() {
+    public String getServerData() {
         System.out.println("Returning data from server through gateway");
         try {
             System.out.println("Endpoint name : [" + msEndpoint + "]");
