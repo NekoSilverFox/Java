@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway
+
+server:
+  port: 8080
+  ssl:
+    enabled: true
+    client-auth: need
+    key-store: classpath:gateway.jks
+    key-store-password: password
+    key-alias: gateway
+    key-store-type: JKS
+    key-store-provider: SUN
+    trust-store: classpath:gateway.jks
+    trust-store-password: password
+    trust-store-type: JKS
+
+endpoint:
+  server: https://localhost:8765/server/data
