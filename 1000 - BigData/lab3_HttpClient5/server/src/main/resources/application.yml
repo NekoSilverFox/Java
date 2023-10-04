@@ -8,10 +8,10 @@ server:
     enabled: true
     client-auth: need
     key-store: classpath:server.jks
-    key-store-password: 123456
+    key-store-password: password
     key-alias: server
     key-store-type: JKS
     key-store-provider: SUN
     trust-store: classpath:server.jks
-    trust-store-password: 123456
+    trust-store-password: password
     trust-store-type: JKS

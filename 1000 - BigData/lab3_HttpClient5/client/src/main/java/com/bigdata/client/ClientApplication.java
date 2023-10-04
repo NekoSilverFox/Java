@@ -38,10 +38,10 @@ public class ClientApplication {
 			keyStore = KeyStore.getInstance("jks");
 			ClassPathResource classPathResource = new ClassPathResource("gateway.jks");
 			InputStream inputStream = classPathResource.getInputStream();
-			keyStore.load(inputStream, "123456".toCharArray());
+			keyStore.load(inputStream, "password".toCharArray());
 			SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(new SSLContextBuilder()
 					.loadTrustMaterial(null, new TrustSelfSignedStrategy())
-					.loadKeyMaterial(keyStore, "123456".toCharArray()).build(),
+					.loadKeyMaterial(keyStore, "password".toCharArray()).build(),
 					NoopHostnameVerifier.INSTANCE);
 
 
