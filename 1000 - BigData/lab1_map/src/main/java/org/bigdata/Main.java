@@ -33,7 +33,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Obfuscate please input `o`, Deobfuscate input `d`: ");
+        System.out.println("Obfuscate please input `o`, Unobfuscate input `d`: ");
         char mode = (char) br.read();
 
         /* обфускирования */
@@ -73,7 +73,7 @@ public class Main {
 
             /* де-обфускация */
         } else if ('d' == mode) {
-            System.out.println("<< Deobfuscate");
+            System.out.println("<< Unobfuscate");
 
             if (Files.notExists(Path.of(OBFUSCATED_FILEPATH))) {
                 System.out.printf("Obfuscated file " + OBFUSCATED_FILEPATH + " not found");

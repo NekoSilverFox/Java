@@ -72,7 +72,7 @@ public class Main {
 
             /* де-обфускация */
         } else if ('d' == mode) {
-            System.out.println("<< Deobfuscate");
+            System.out.println("<< Unobfuscate");
 
             if (Files.notExists(Path.of(OBFUSCATED_FILEPATH))) {
                 System.out.printf("Obfuscated file " + OBFUSCATED_FILEPATH + " not found");
