@@ -10,18 +10,40 @@
  */
 package com.bigdata.client;
 
-import org.springframework.stereotype.Component;
-
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Component;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class CustomZuulFilter extends ZuulFilter {
+
+    private static Logger log = LoggerFactory.getLogger(CustomZuulFilter.class);
+
+    /**
+     * Zuul 提供了四种过滤器的 API，分别为前置（Pre）、后置（Post）、路由（Route）和错误（Error）四种处理方式
+     */
+    @Override
+    public String filterType() {
+        return "pre";
+    }
 
     @Override
     public Object run() {
         final RequestContext ctx = RequestContext.getCurrentContext();
         ctx.addZuulRequestHeader("Test", "TestSample");
+
+        HttpServletRequest request = ctx.getRequest();
+        HttpServletResponse response = ctx.getResponse();
+        log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
+        log.info(String.format("response Status : %s, ContentType:  %s", response.getStatus(), response.getContentType()));
+
+
         return null;
     }
 
@@ -35,9 +57,5 @@ public class CustomZuulFilter extends ZuulFilter {
         return 999;
     }
 
-    @Override
-    public String filterType() {
-        return "pre";
-    }
 
 }

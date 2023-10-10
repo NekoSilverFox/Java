@@ -25,6 +25,6 @@ public class DataObjectController {
         if (req.getHeader("Test") != null) {
             res.addHeader("Test", req.getHeader("Test"));
         }
-        return new DataObject(id, RandomStringUtils.randomAlphanumeric(10));
+        return new DataObject(id, "Random string: " + RandomStringUtils.randomAlphanumeric(10));
     }
 }

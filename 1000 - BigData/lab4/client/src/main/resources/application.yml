@@ -1,0 +1,12 @@
+zuul:
+  routes:
+    foos:
+      path: /data/**
+      url: http://localhost:8081/rest-api/data
+
+#ribbon:
+#  eureka:
+#    enabled: false
+#
+#server:
+#  port: 8080
