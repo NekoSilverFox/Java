@@ -1,0 +1,30 @@
+<html>
+<body ng-app="myApp" ng-controller="mainCtrl">
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-resource.min.js"></script>
+<script>
+    var app = angular.module('myApp', ["ngResource"]);
+    app.controller('mainCtrl', function($scope,$resource,$http) {
+        $scope.data = {id: 0, name: "-"};
+        $scope.dataResource = $resource("/data/:dataId",{dataId: '@id'});
+        $scope.getDataObject = function(){
+            $scope.data = $scope.dataResource.get({dataId:
+                    $scope.randomInteger(1, 10)});
+        };
+        $scope.randomInteger = function(min, max) {
+            var rand = min - 0.5 + Math.random() * (max - min + 1);
+            return Math.round(rand);
+        };
+    });
+</script>
+<div>
+    <h1>Data Object Details</h1>
+    <div>ID: {{data.id}}</div>
+    <div>Name: {{data.name}}</div>
+    <br/>
+    <a href="#" ng-click="getDataObject()">Get Data From Server</a>
+</div>
+</body>
+</html>
