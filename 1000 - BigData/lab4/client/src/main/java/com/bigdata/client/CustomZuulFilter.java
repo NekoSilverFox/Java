@@ -23,13 +23,12 @@ import org.slf4j.LoggerFactory;
 @Component
 public class CustomZuulFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(CustomZuulFilter.class);
-
     /**
      * Zuul 提供了四种过滤器的 API，分别为前置（Pre）、后置（Post）、路由（Route）和错误（Error）四种处理方式
      */
     @Override
     public String filterType() {
+        System.out.println("Print from Custom filter pre");
         return "pre";
     }
 
@@ -40,10 +39,10 @@ public class CustomZuulFilter extends ZuulFilter {
 
         HttpServletRequest request = ctx.getRequest();
         HttpServletResponse response = ctx.getResponse();
-        log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-        log.info(String.format("response Status : %s, ContentType:  %s", response.getStatus(), response.getContentType()));
+        System.out.println("Request Method: " + ctx.getRequest().getMethod());
+        System.out.println("Request URL: " + ctx.getRequest().getRequestURL().toString());
 
-
+        System.out.println("Add header to request");
         return null;
     }
 

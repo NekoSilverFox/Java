@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class DataObjectController {
     @RequestMapping(value = "/data/{id}", method = RequestMethod.GET)
     @ResponseBody
+    @CrossOrigin
     public DataObject findById(
             @PathVariable long id, HttpServletRequest req, HttpServletResponse res)
     {

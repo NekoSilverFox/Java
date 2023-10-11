@@ -21,11 +21,5 @@ public class GatewayApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
-//        new SpringApplicationBuilder(GatewayApplication.class).run(args);
     }
-
-//    @Bean
-//    public CustomZuulFilter customZuulFilter() {
-//        return new CustomZuulFilter();
-//    }
 }

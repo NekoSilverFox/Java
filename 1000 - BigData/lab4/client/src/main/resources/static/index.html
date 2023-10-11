@@ -1,4 +1,4 @@
-<html lang="">
+<html>
 <body ng-app="myApp" ng-controller="mainCtrl">
 <script
         src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js">
@@ -8,7 +8,7 @@
     var app = angular.module('myApp', ["ngResource"]);
     app.controller('mainCtrl', function($scope,$resource,$http) {
         $scope.data = {id: 0, name: "-"};
-        $scope.dataResource = $resource("/data/:dataId",{dataId: '@id'});
+        $scope.dataResource = $resource("http://localhost:8081/rest-api/data/:dataId",{dataId: '@id'});
         $scope.getDataObject = function(){
             $scope.data = $scope.dataResource.get({dataId:
                     $scope.randomInteger(1, 10)});
