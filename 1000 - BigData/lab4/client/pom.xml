@@ -16,10 +16,8 @@
     <properties>
         <java.version>17</java.version>
 
-        <!--  https://github.com/spring-cloud/spring-cloud-netflix/issues/4177#issuecomment-1637551399
-              版本改为 2022.0.2 才会运行，不然高版本不支持
-        -->
-        <spring-cloud.version>2022.0.2</spring-cloud.version>
+
+        <spring-cloud.version>2022.0.4</spring-cloud.version>
     </properties>
 
     <dependencies>
